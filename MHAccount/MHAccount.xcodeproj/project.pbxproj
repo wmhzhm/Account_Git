@@ -15,6 +15,7 @@
 		2F7D72151D5D73D300E048C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D72131D5D73D300E048C5 /* LaunchScreen.storyboard */; };
 		2F7D72201D5D73D300E048C5 /* MHAccountTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D721F1D5D73D300E048C5 /* MHAccountTests.m */; };
 		2F7D722B1D5D73D300E048C5 /* MHAccountUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D722A1D5D73D300E048C5 /* MHAccountUITests.m */; };
+		2F7D723A1D5D830700E048C5 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D72391D5D830700E048C5 /* Account.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		2F7D72261D5D73D300E048C5 /* MHAccountUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MHAccountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7D722A1D5D73D300E048C5 /* MHAccountUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAccountUITests.m; sourceTree = "<group>"; };
 		2F7D722C1D5D73D300E048C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F7D72381D5D830700E048C5 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		2F7D72391D5D830700E048C5 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				2F7D72131D5D73D300E048C5 /* LaunchScreen.storyboard */,
 				2F7D72161D5D73D300E048C5 /* Info.plist */,
 				2F7D72051D5D73D300E048C5 /* Supporting Files */,
+				2F7D72381D5D830700E048C5 /* Account.h */,
+				2F7D72391D5D830700E048C5 /* Account.m */,
 			);
 			path = MHAccount;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F7D720D1D5D73D300E048C5 /* ViewController.m in Sources */,
+				2F7D723A1D5D830700E048C5 /* Account.m in Sources */,
 				2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */,
 				2F7D72071D5D73D300E048C5 /* main.m in Sources */,
 			);
