@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MHDatabase.h"
 
 
 @interface AppDelegate ()
@@ -26,7 +26,7 @@
 //    
 //    nav.navigationBar.backgroundColor = [UIColor blueColor];
 //    [self.window makeKeyAndVisible];
-    
+    [MHDatabase createDatabase];
     return YES;
 }
 

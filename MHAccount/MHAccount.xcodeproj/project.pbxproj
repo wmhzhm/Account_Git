@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F33DB8E1D659017009B10BD /* MHDatabase.m */; };
+		2F33DB911D6592CB009B10BD /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */; };
 		2F7D72071D5D73D300E048C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D72061D5D73D300E048C5 /* main.m */; };
 		2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D72091D5D73D300E048C5 /* AppDelegate.m */; };
 		2F7D72101D5D73D300E048C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D720E1D5D73D300E048C5 /* Main.storyboard */; };
@@ -17,6 +19,9 @@
 		2FAA384E1D62E431000B19A1 /* MHDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA384D1D62E431000B19A1 /* MHDetailedViewController.m */; };
 		2FAA38541D62F9CC000B19A1 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA38531D62F9CC000B19A1 /* MHTabBarController.m */; };
 		2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA38561D6308C2000B19A1 /* MHDetailView.m */; };
+		2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */; };
+		2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380D1D65A83500324A40 /* MHBagCell.m */; };
+		2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA38101D65AA2F00324A40 /* MHBagModel.m */; };
 		65B795B5DEFD1A0C86811B08 /* libPods-MHAccount.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FDD1C2D24BEB953409CC4D /* libPods-MHAccount.a */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F33DB8D1D659017009B10BD /* MHDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDatabase.h; sourceTree = "<group>"; };
+		2F33DB8E1D659017009B10BD /* MHDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDatabase.m; sourceTree = "<group>"; };
+		2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		2F7D72021D5D73D300E048C5 /* MHAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7D72061D5D73D300E048C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F7D72081D5D73D300E048C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +66,12 @@
 		2FAA38531D62F9CC000B19A1 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarController.m; sourceTree = "<group>"; };
 		2FAA38551D6308C2000B19A1 /* MHDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDetailView.h; sourceTree = "<group>"; };
 		2FAA38561D6308C2000B19A1 /* MHDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDetailView.m; sourceTree = "<group>"; };
+		2FEA38091D65A73600324A40 /* MHMyBagTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMyBagTableViewController.h; sourceTree = "<group>"; };
+		2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMyBagTableViewController.m; sourceTree = "<group>"; };
+		2FEA380C1D65A83500324A40 /* MHBagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagCell.h; sourceTree = "<group>"; };
+		2FEA380D1D65A83500324A40 /* MHBagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBagCell.m; sourceTree = "<group>"; };
+		2FEA380F1D65AA2F00324A40 /* MHBagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagModel.h; sourceTree = "<group>"; };
+		2FEA38101D65AA2F00324A40 /* MHBagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBagModel.m; sourceTree = "<group>"; };
 		47FDD1C2D24BEB953409CC4D /* libPods-MHAccount.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MHAccount.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6289CC397615D06A22A8743 /* Pods-MHAccount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHAccount.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount.debug.xcconfig"; sourceTree = "<group>"; };
 		E1839BA412C8BEBA2E650329 /* Pods-MHAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHAccount.release.xcconfig"; path = "Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F33DB911D6592CB009B10BD /* libsqlite3.0.tbd in Frameworks */,
 				65B795B5DEFD1A0C86811B08 /* libPods-MHAccount.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,14 +129,11 @@
 		2F7D72041D5D73D300E048C5 /* MHAccount */ = {
 			isa = PBXGroup;
 			children = (
+				2FEA38051D65A6A200324A40 /* 钱包 */,
+				2FAA38481D62E1EB000B19A1 /* 明细 */,
+				2FAA38581D640935000B19A1 /* Other */,
 				2F7D72081D5D73D300E048C5 /* AppDelegate.h */,
 				2F7D72091D5D73D300E048C5 /* AppDelegate.m */,
-				2FAA38481D62E1EB000B19A1 /* 明细 */,
-				2F7D720E1D5D73D300E048C5 /* Main.storyboard */,
-				2F7D72111D5D73D300E048C5 /* Assets.xcassets */,
-				2F7D72131D5D73D300E048C5 /* LaunchScreen.storyboard */,
-				2F7D72161D5D73D300E048C5 /* Info.plist */,
-				2F7D72051D5D73D300E048C5 /* Supporting Files */,
 				2FAA38521D62F9CC000B19A1 /* MHTabBarController.h */,
 				2FAA38531D62F9CC000B19A1 /* MHTabBarController.m */,
 			);
@@ -189,6 +201,57 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		2FAA38581D640935000B19A1 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2F7D720E1D5D73D300E048C5 /* Main.storyboard */,
+				2F7D72111D5D73D300E048C5 /* Assets.xcassets */,
+				2F7D72131D5D73D300E048C5 /* LaunchScreen.storyboard */,
+				2F7D72161D5D73D300E048C5 /* Info.plist */,
+				2F7D72051D5D73D300E048C5 /* Supporting Files */,
+				2F33DB8D1D659017009B10BD /* MHDatabase.h */,
+				2F33DB8E1D659017009B10BD /* MHDatabase.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		2FEA38051D65A6A200324A40 /* 钱包 */ = {
+			isa = PBXGroup;
+			children = (
+				2FEA38081D65A6BE00324A40 /* Controller */,
+				2FEA38071D65A6B900324A40 /* View */,
+				2FEA38061D65A6B400324A40 /* Model */,
+			);
+			name = "钱包";
+			sourceTree = "<group>";
+		};
+		2FEA38061D65A6B400324A40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FEA380F1D65AA2F00324A40 /* MHBagModel.h */,
+				2FEA38101D65AA2F00324A40 /* MHBagModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2FEA38071D65A6B900324A40 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FEA380C1D65A83500324A40 /* MHBagCell.h */,
+				2FEA380D1D65A83500324A40 /* MHBagCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2FEA38081D65A6BE00324A40 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FEA38091D65A73600324A40 /* MHMyBagTableViewController.h */,
+				2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		581CB93408FC56573DD31B25 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +264,7 @@
 		FF8B1DBFB652AD5BCDC9F904 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */,
 				47FDD1C2D24BEB953409CC4D /* libPods-MHAccount.a */,
 			);
 			name = Frameworks;
@@ -388,10 +452,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */,
+				2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */,
 				2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */,
 				2FAA384E1D62E431000B19A1 /* MHDetailedViewController.m in Sources */,
 				2F7D72071D5D73D300E048C5 /* main.m in Sources */,
+				2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */,
 				2FAA38541D62F9CC000B19A1 /* MHTabBarController.m in Sources */,
+				2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */,
+				2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
