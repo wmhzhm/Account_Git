@@ -37,34 +37,36 @@
     }else{
         NSLog(@"数据库打开成功");
     }
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    if (![fileManager fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"members.db"]]) {
-    /**
-     *  建表
-     *
-     *  @param null MH_ACCOUNT
-     *  @param null MH_BILL
-     *  @param null MH_OU_TYPE
-     *  @param null MH_IN_TYPE
-     */
+
+    [[self alloc] buildTableAtDB:db];
+    [[self alloc] insertMH_ACCOUNT:db];
+    
+    
+    [db close];
+}
+
+- (void)buildTableAtDB:(FMDatabase*)db{
     NSString *sql_create_table = @"create table if not exists MH_ACCOUNT (id integer primary key autoincrement not null, ACCOUNT_TYPE text not null,ACCOUNT_IMG text not null, ACCOUNT_COLOR INTEGER not null, ACCOUNT_MONEY TEXT not null);"
     
-                    "create table if not exists MH_BILL (id integer primary key autoincrement, BILL_TYPE TEXT not null,IN_OUT TEXT not null,BILL_WHEN TEXT not null,REMARK TEXT);"
+    "create table if not exists MH_BILL (id integer primary key autoincrement, BILL_TYPE TEXT not null,IN_OUT TEXT not null,BILL_WHEN TEXT not null,REMARK TEXT);"
     
-                    "create table if not exists MH_OUT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null);"
+    "create table if not exists MH_OUT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null);"
     
-                    "create table if not exists MH_IN_TYPE  (id integer primary key autoincrement,TYPE_NAME TEXT not null,TYPE_IMG TEXT not null)";
+    "create table if not exists MH_ACCOUNT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null);"
+    
+    
+    "create table if not exists MH_IN_TYPE  (id integer primary key autoincrement,TYPE_NAME TEXT not null,TYPE_IMG TEXT not null)";
+    
+    
     BOOL success = [db executeStatements:sql_create_table];
     if (!success) {
-            NSLog(@"建表失败！");
-        }else{
-            NSLog(@"建表成功！");
-        }
-//    }
-    /**
-     *  插入基本数据
-     */
-    //先查找数据，如果没有返回有效数据，则插入数据
+        NSLog(@"建表失败！");
+    }else{
+        NSLog(@"建表成功！");
+    }
+}
+
+- (void)insertMH_ACCOUNT:(FMDatabase*)db{
     FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT"];
     if (![res next]) {
         [db executeUpdate:@"insert into MH_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"现金",@"cash_img",@"0",@"0.00"];
@@ -73,12 +75,20 @@
         [db executeUpdate:@"insert into MH_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"支付宝",@"alipay",@"3",@"0.00"];
         NSLog(@"生产账户数据");
     }
-    
     [res close];
-    [db close];
 }
 
-
+//- (void)insertMH_ACCOUNT_TYPE:(FMDatabase *)db{
+//    FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT_TYPE"];
+//    if (![res next]) {
+//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"现金",@"cash_img",@"0",@"0.00"];
+//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"储蓄卡",@"savingcard_img",@"1",@"0.00"];
+//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"信用卡",@"credit_card",@"2",@"0.00"];
+//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"支付宝",@"alipay",@"3",@"0.00"];
+//        NSLog(@"生产账户数据");
+//    }
+//    [res close];
+//}
 /**
  *  获取账户信息表
  *

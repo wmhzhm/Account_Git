@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F33DB8E1D659017009B10BD /* MHDatabase.m */; };
 		2F33DB911D6592CB009B10BD /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */; };
+		2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE67A1D6AED37004D449A /* MHAddBagController.m */; };
+		2F6FE6811D6AF9B2004D449A /* MHAddBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE6801D6AF9B2004D449A /* MHAddBagCell.m */; };
 		2F7D72071D5D73D300E048C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D72061D5D73D300E048C5 /* main.m */; };
 		2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D72091D5D73D300E048C5 /* AppDelegate.m */; };
 		2F7D72101D5D73D300E048C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D720E1D5D73D300E048C5 /* Main.storyboard */; };
@@ -46,6 +48,10 @@
 		2F33DB8D1D659017009B10BD /* MHDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDatabase.h; sourceTree = "<group>"; };
 		2F33DB8E1D659017009B10BD /* MHDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDatabase.m; sourceTree = "<group>"; };
 		2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		2F6FE6791D6AED37004D449A /* MHAddBagController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBagController.h; sourceTree = "<group>"; };
+		2F6FE67A1D6AED37004D449A /* MHAddBagController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAddBagController.m; sourceTree = "<group>"; };
+		2F6FE67F1D6AF9B2004D449A /* MHAddBagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBagCell.h; sourceTree = "<group>"; };
+		2F6FE6801D6AF9B2004D449A /* MHAddBagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAddBagCell.m; sourceTree = "<group>"; };
 		2F7D72021D5D73D300E048C5 /* MHAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7D72061D5D73D300E048C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F7D72081D5D73D300E048C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -239,6 +245,8 @@
 			children = (
 				2FEA380C1D65A83500324A40 /* MHBagCell.h */,
 				2FEA380D1D65A83500324A40 /* MHBagCell.m */,
+				2F6FE67F1D6AF9B2004D449A /* MHAddBagCell.h */,
+				2F6FE6801D6AF9B2004D449A /* MHAddBagCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -248,6 +256,8 @@
 			children = (
 				2FEA38091D65A73600324A40 /* MHMyBagTableViewController.h */,
 				2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */,
+				2F6FE6791D6AED37004D449A /* MHAddBagController.h */,
+				2F6FE67A1D6AED37004D449A /* MHAddBagController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -452,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */,
+				2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */,
 				2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */,
 				2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */,
 				2FAA384E1D62E431000B19A1 /* MHDetailedViewController.m in Sources */,
@@ -459,6 +470,7 @@
 				2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */,
 				2FAA38541D62F9CC000B19A1 /* MHTabBarController.m in Sources */,
 				2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */,
+				2F6FE6811D6AF9B2004D449A /* MHAddBagCell.m in Sources */,
 				2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

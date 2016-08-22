@@ -7,6 +7,7 @@
 //
 
 #import "MHMyBagTableViewController.h"
+#import "MHAddBagController.h"
 #import "MHDatabase.h"
 #import "MHBagCell.h"
 #import "MHBagModel.h"
@@ -22,11 +23,27 @@
 {
     [super viewDidLoad];
     
+    //生成添加账户按钮
+    UIButton *itemBtn = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [itemBtn setImage:[UIImage imageNamed:@"add_img"]forState:UIControlStateNormal];
+    [itemBtn addTarget:self action:@selector(clickEvent)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:itemBtn];
+    self.navigationItem.rightBarButtonItem= rightItem;
+    
+    //隐藏分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     //获取账户对象组
     _accountArray = [[MHDatabase searchAccount] copy];
-    NSLog(@"%@",_accountArray);
 }
 
+- (void)clickEvent
+{
+//    NSLog(@"%@",self.navigationController);
+    //跳转到添加账户控制器
+    MHAddBagController *addBag = [[MHAddBagController alloc] init];
+    [self.navigationController pushViewController:addBag animated:YES];
+}
 
 #pragma mark - TableViewdelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -36,10 +53,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *ID = @"MHBag";
+        static NSString *ID = @"MHBag";
     
         MHBagCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-
+        
         if (!cell) {
             cell = [[MHBagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
             if (indexPath.row == 0) {

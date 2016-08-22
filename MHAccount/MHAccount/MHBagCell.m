@@ -36,7 +36,9 @@
     {
         //设置点击无样式
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        
+        //取消分割线
+        
         //创建self的弱引用
         WEAKSELF
             //背景图片约束
@@ -148,6 +150,5 @@
             self.bcgImg.backgroundColor = WHITE;
             break;
     }
-    NSLog(@"%@",_bcgImg.backgroundColor);
 }
 @end
