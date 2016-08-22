@@ -39,7 +39,7 @@
             </objects>
             <point key="canvasLocation" x="1341" y="1266"/>
         </scene>
-        <!--My Bag Table View Controller-->
+        <!--钱包-->
         <scene sceneID="ibV-Ds-NJO">
             <objects>
                 <tableViewController id="b37-Rd-631" customClass="MHMyBagTableViewController" sceneMemberID="viewController">
@@ -62,7 +62,7 @@
                             <outlet property="delegate" destination="b37-Rd-631" id="qK2-hv-kys"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="UdZ-I9-0jY"/>
+                    <navigationItem key="navigationItem" title="钱包" id="UdZ-I9-0jY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BjF-bH-KfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

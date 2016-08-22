@@ -12,7 +12,7 @@
 @interface MHBagModel : NSObject
 @property (nonatomic ,copy)NSString *type;//账户类型
 @property (nonatomic ,copy)NSString *img;//图片名称
-@property (nonatomic ,copy)NSString *color;//背景颜色
+@property (nonatomic ,assign)int color;//背景颜色
 @property (nonatomic ,copy)NSString *money;//账户余额
 
 - (instancetype)initWithDict:(NSDictionary *)dict;

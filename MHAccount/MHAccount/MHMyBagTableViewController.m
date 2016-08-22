@@ -7,12 +7,13 @@
 //
 
 #import "MHMyBagTableViewController.h"
+#import "MHDatabase.h"
 #import "MHBagCell.h"
 #import "MHBagModel.h"
 
 @interface MHMyBagTableViewController()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *accountArray;//账户对象组
-
+@property (nonatomic, strong) UIButton *rightBtn;
 
 @end
 
@@ -21,27 +22,32 @@
 {
     [super viewDidLoad];
     
-    
+    //获取账户对象组
+    _accountArray = [[MHDatabase searchAccount] copy];
+    NSLog(@"%@",_accountArray);
 }
 
 
 #pragma mark - TableViewdelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _accountArray.count + 2;
+    return _accountArray.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *ID = @"MHBag";
-    MHBagModel *bagModel = [[MHBagModel alloc] initWithDict:_accountArray[indexPath.row]];
-    MHBagCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     
-    if (!cell) {
-        cell = [[MHBagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        
-    }
-    
+        MHBagCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+
+        if (!cell) {
+            cell = [[MHBagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+            if (indexPath.row == 0) {
+                [MHBagCell sumMoneyCell:cell WithAccount:_accountArray];
+            }else{
+                cell.bagModel = _accountArray[indexPath.row - 1];
+            }
+        }
     return cell;
 }
 @end
