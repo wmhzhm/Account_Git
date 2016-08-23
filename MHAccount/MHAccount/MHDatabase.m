@@ -10,6 +10,7 @@
 #import <FMDB.h>
 #import <FMResultSet.h>
 #import "MHBagModel.h"
+#import "MHBagTypeModel.h"
 
 @implementation MHDatabase
 /**
@@ -40,7 +41,7 @@
 
     [[self alloc] buildTableAtDB:db];
     [[self alloc] insertMH_ACCOUNT:db];
-    
+    [[self alloc] insertMH_ACCOUNT_TYPE:db];
     
     [db close];
 }
@@ -52,7 +53,7 @@
     
     "create table if not exists MH_OUT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null);"
     
-    "create table if not exists MH_ACCOUNT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null);"
+    "create table if not exists MH_ACCOUNT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null,COLOR INTEGER not null);"
     
     
     "create table if not exists MH_IN_TYPE  (id integer primary key autoincrement,TYPE_NAME TEXT not null,TYPE_IMG TEXT not null)";
@@ -73,22 +74,26 @@
         [db executeUpdate:@"insert into MH_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"储蓄卡",@"savingcard_img",@"1",@"0.00"];
         [db executeUpdate:@"insert into MH_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"信用卡",@"credit_card",@"2",@"0.00"];
         [db executeUpdate:@"insert into MH_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"支付宝",@"alipay",@"3",@"0.00"];
-        NSLog(@"生产账户数据");
+        NSLog(@"生产默认账户数据");
     }
     [res close];
 }
 
-//- (void)insertMH_ACCOUNT_TYPE:(FMDatabase *)db{
-//    FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT_TYPE"];
-//    if (![res next]) {
-//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"现金",@"cash_img",@"0",@"0.00"];
-//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"储蓄卡",@"savingcard_img",@"1",@"0.00"];
-//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"信用卡",@"credit_card",@"2",@"0.00"];
-//        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",@"支付宝",@"alipay",@"3",@"0.00"];
-//        NSLog(@"生产账户数据");
-//    }
-//    [res close];
-//}
+- (void)insertMH_ACCOUNT_TYPE:(FMDatabase *)db{
+    FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT_TYPE"];
+    if (![res next]) {
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"现金",@"cash_img",@"0"];
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"储蓄卡",@"savingcard_img",@"1"];
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"信用卡",@"credit_card",@"2"];
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"网络账户",@"alipay",@"3"];
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"投资账户",@"investment_img",@"4"];
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"储值卡",@"value_img",@"5"];
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"应付账",@"pay_img",@"6"];
+        [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"应收账",@"money_img",@"7"];
+        NSLog(@"生产账户类型数据");
+    }
+    [res close];
+}
 /**
  *  获取账户信息表
  *
@@ -117,5 +122,31 @@
     [db close];
     return array;
 }
+/**
+ *  查询当前所有钱包分类
+ *
+ *  @return 返回含有所有钱包分类模型对象的数组
+ */
 
++ (NSArray *)searchBagType{
+    NSArray *array = [[NSArray alloc] init];
+    NSMutableArray *mArray = [[NSMutableArray alloc] init];
+    FMDatabase *db = [self myDB];
+    
+    [db open];
+    
+    
+    FMResultSet *res = [db executeQuery:@"select TYPE_NAME,TYPE_IMG,COLOR from MH_ACCOUNT_TYPE"];
+    while ([res next]) {
+        MHBagTypeModel *model = [[MHBagTypeModel alloc] init];
+        model.type = [res stringForColumn:@"TYPE_NAME"];
+        model.img = [res stringForColumn:@"TYPE_IMG"];
+        model.color = [res intForColumn:@"COLOR"];
+        [mArray addObject:model];
+    }
+    array = [mArray copy];
+    [res close];
+    [db close];
+    return array;
+}
 @end

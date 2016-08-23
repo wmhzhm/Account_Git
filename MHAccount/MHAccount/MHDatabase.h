@@ -11,4 +11,5 @@
 @interface MHDatabase : NSObject
 + (void)createDatabase;
 + (NSArray*)searchAccount;
++ (NSArray *)searchBagType;
 @end

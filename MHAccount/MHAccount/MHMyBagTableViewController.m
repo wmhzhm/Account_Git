@@ -39,7 +39,6 @@
 
 - (void)clickEvent
 {
-//    NSLog(@"%@",self.navigationController);
     //跳转到添加账户控制器
     MHAddBagController *addBag = [[MHAddBagController alloc] init];
     [self.navigationController pushViewController:addBag animated:YES];

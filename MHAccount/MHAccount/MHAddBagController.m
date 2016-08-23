@@ -7,9 +7,14 @@
 //
 
 #import "MHAddBagController.h"
+#import "MHDatabase.h"
+#import "MHAddBagCell.h"
+#import "MHBagTypeModel.h"
+#import "MHBagMessageController.h"
+
 @interface MHAddBagController()<UITableViewDelegate,UITableViewDataSource>
 
-
+@property (nonatomic , strong)NSArray *bagTypeArray;
 
 @end
 
@@ -19,24 +24,42 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:@"添加钱包"];
+    [self.navigationItem setTitle:@"选择账户类型"];
+    
+    self.bagTypeArray = [NSArray array];
+    self.bagTypeArray = [MHDatabase searchBagType];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 
 #pragma mark - Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _bagTypeArray.count;
 }
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    static NSString *ID = @"AddBag";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    MHAddBagCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-        cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+        cell = [[MHAddBagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell.bagTypeModel = _bagTypeArray[indexPath.row];
     }
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MHBagMessageController *bMC = [[MHBagMessageController alloc] init];
+    
+    bMC.model = _bagTypeArray[indexPath.row];
+    
+    [self.navigationController pushViewController:bMC animated:YES];
+}
 @end

@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Masonry.h>
+#import "MHBagTypeModel.h"
+
+@class MHBagTypeModel;
 
 @interface MHAddBagCell : UITableViewCell
 
 @property(nonatomic, strong)UIImageView *typeImg;
 @property(nonatomic ,strong)UILabel *typeName;
+@property (nonatomic ,strong)MHBagTypeModel *bagTypeModel;//cell对应的Bag模型
 @end
