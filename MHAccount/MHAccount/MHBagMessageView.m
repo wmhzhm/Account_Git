@@ -185,9 +185,11 @@
 {
     if (!_accountMoney) {
         _accountMoney = [[UITextField alloc] init];
+        _accountMoney.placeholder = [NSString stringWithFormat:@"账户金额"];
+        _accountMoney.borderStyle = UITextBorderStyleRoundedRect;
+        _accountMoney.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     }
-    _accountMoney.placeholder = [NSString stringWithFormat:@"账户金额"];
-    _accountMoney.borderStyle = UITextBorderStyleRoundedRect;
+
     return _accountMoney;
 }
 

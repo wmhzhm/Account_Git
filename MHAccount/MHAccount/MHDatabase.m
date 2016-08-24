@@ -61,8 +61,6 @@
     
     
     "create table if not exists MH_IN_TYPE  (id integer primary key autoincrement,TYPE_NAME TEXT not null,TYPE_IMG TEXT not null)";
-    
-    
     BOOL success = [db executeStatements:sql_create_table];
     if (!success) {
         NSLog(@"建表失败！");
@@ -70,7 +68,6 @@
         NSLog(@"建表成功！");
     }
 }
-
 - (void)insertMH_ACCOUNT:(FMDatabase*)db{
     FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT"];
     if (![res next]) {
@@ -82,7 +79,6 @@
     }
     [res close];
 }
-
 - (void)insertMH_ACCOUNT_TYPE:(FMDatabase *)db{
     FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT_TYPE"];
     if (![res next]) {
@@ -152,5 +148,14 @@
     [res close];
     [db close];
     return array;
+}
+
+
++ (void)addBagModel:(MHBagModel*)model
+{
+    FMDatabase *db = [self myDB];
+    [db open];
+    [db executeUpdate:@"insert into MH_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",[NSString stringWithFormat:@"%@",model.type],[NSString stringWithFormat:@"%@",model.img],[NSString stringWithFormat:@"%d",model.color],[NSString stringWithFormat:@"%@",model.money]];
+    [db close];
 }
 @end

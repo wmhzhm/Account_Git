@@ -18,6 +18,7 @@
 @interface MHBagMessageController()<UITextFieldDelegate>
 
 @property (nonatomic, strong)MHBagTypeModel *bagTypeModel;
+@property (nonatomic ,strong)MHBagMessageView *bMView;
 
 @end
 
@@ -27,12 +28,12 @@
     [super viewDidLoad];
     
     
-    MHBagMessageView *bMView = [[MHBagMessageView alloc] initWithFrame:self.view.frame];
-    self.view = bMView;
+    self.bMView = [[MHBagMessageView alloc] initWithFrame:self.view.frame];
+    self.view = self.bMView;
     
     
-    bMView.accountName.delegate = self;
-    bMView.accountMoney.delegate = self;
+    self.bMView.accountName.delegate = self;
+    self.bMView.accountMoney.delegate = self;
     
     
     [self.navigationItem setTitle:[NSString stringWithFormat:@"填写%@账户",self.bagTypeModel.type]];
@@ -51,25 +52,47 @@
     [itemBtn addTarget:self action:@selector(clickEvent)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:itemBtn];
     self.navigationItem.rightBarButtonItem= rightItem;
-
+    
 }
 
 
 
 - (void)clickEvent{
-    //插入数据到MH_ACCOUNT表中
-        //获取模型数据
     
+    if (self.bMView.accountName.text.length == 0) {
+        //发出警告
+        
+        
+        return;
+    }
+    if (self.bMView.accountMoney.text.length == 0) {
+        //发出警告
+        
+        return;
+    }
+    //插入数据到MH_ACCOUNT表中
+    [self insertDB];
     
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 }
 
+- (void)insertDB
+{
+    MHBagModel *model = [[MHBagModel alloc] init];
+    model.type = self.bMView.accountName.text;
+    model.img = self.bagTypeModel.img;
+    model.color = self.bMView.colorNum;
+    float money = [self.bMView.accountMoney.text floatValue];
+    model.money = [NSString stringWithFormat:@"%.2f",money];
+    [MHDatabase addBagModel:model];
 
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self.view resignFirstResponder];
+    [self.view endEditing:YES];
 }
+
 
 
 /**
@@ -84,10 +107,8 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"123");
     [self.view endEditing:YES];
     return YES;
-    
 }
 
 @end

@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MHBagModel.h"
 
 @interface MHDatabase : NSObject
 + (void)createDatabase;
 + (NSArray*)searchAccount;
 + (NSArray *)searchBagType;
++ (void)addBagModel:(MHBagModel*)model;
 @end
