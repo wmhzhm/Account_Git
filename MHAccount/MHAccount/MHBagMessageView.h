@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define WEAKSELF __weak typeof(self) weakSelf = self;
 @interface MHBagMessageView : UIView
 
 @property (nonatomic, strong)UITextField *accountName;
 @property (nonatomic ,strong)UITextField *accountMoney;
+@property (nonatomic, strong)UIView *colorView;
+@property (nonatomic, strong)UILabel *colorLabel;
+@property (nonatomic, strong)UIButton *colorImg;
+@property (nonatomic, assign)int colorNum;
 
 @end
