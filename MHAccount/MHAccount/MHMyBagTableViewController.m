@@ -32,9 +32,14 @@
     
     //隐藏分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     //获取账户对象组
     _accountArray = [[MHDatabase searchAccount] copy];
+    
+    [[self tableView] reloadData];
 }
 
 - (void)clickEvent

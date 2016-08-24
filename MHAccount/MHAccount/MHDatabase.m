@@ -21,7 +21,11 @@
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *DBPath = [documentPath stringByAppendingPathComponent:@"members.db"];//成员列表数据库
     FMDatabase *db = [FMDatabase databaseWithPath:DBPath];
-    NSLog(@"%@",DBPath);
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+         NSLog(@"%@",DBPath);
+    });
     return db;
 }
 

@@ -14,6 +14,7 @@
 		2F6FE6841D6BE6A3004D449A /* MHBagTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE6831D6BE6A3004D449A /* MHBagTypeModel.m */; };
 		2F6FE68B1D6BFB53004D449A /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE68A1D6BFB53004D449A /* UIImage+Extension.m */; };
 		2F6FE68E1D6C2B54004D449A /* MHBagMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE68D1D6C2B54004D449A /* MHBagMessageController.m */; };
+		2F6FE6941D6D7B23004D449A /* MHBagMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE6931D6D7B23004D449A /* MHBagMessageView.m */; };
 		2F7D72071D5D73D300E048C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D72061D5D73D300E048C5 /* main.m */; };
 		2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D72091D5D73D300E048C5 /* AppDelegate.m */; };
 		2F7D72101D5D73D300E048C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D720E1D5D73D300E048C5 /* Main.storyboard */; };
@@ -61,6 +62,8 @@
 		2F6FE68A1D6BFB53004D449A /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		2F6FE68C1D6C2B54004D449A /* MHBagMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagMessageController.h; sourceTree = "<group>"; };
 		2F6FE68D1D6C2B54004D449A /* MHBagMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBagMessageController.m; sourceTree = "<group>"; };
+		2F6FE6921D6D7B23004D449A /* MHBagMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagMessageView.h; sourceTree = "<group>"; };
+		2F6FE6931D6D7B23004D449A /* MHBagMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBagMessageView.m; sourceTree = "<group>"; };
 		2F7D72021D5D73D300E048C5 /* MHAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7D72061D5D73D300E048C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F7D72081D5D73D300E048C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				2FEA380D1D65A83500324A40 /* MHBagCell.m */,
 				2F6FE67F1D6AF9B2004D449A /* MHAddBagCell.h */,
 				2F6FE6801D6AF9B2004D449A /* MHAddBagCell.m */,
+				2F6FE6921D6D7B23004D449A /* MHBagMessageView.h */,
+				2F6FE6931D6D7B23004D449A /* MHBagMessageView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6FE6941D6D7B23004D449A /* MHBagMessageView.m in Sources */,
 				2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */,
 				2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */,
 				2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */,

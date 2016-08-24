@@ -13,11 +13,14 @@
 #define WEAKSELF __weak typeof(self) weakSelf = self;
 
 #import "MHBagMessageController.h"
+#import "MHDatabase.h"
+#import "MHBagMessageView.h"
 #import <Masonry.h>
 
 @interface MHBagMessageController()<UITextFieldDelegate>
 
 @property (nonatomic, strong)MHBagTypeModel *bagModel;
+
 @property (nonatomic, strong)UITextField *accountName;
 @property (nonatomic ,strong)UITextField *accountMoney;
 
@@ -29,14 +32,40 @@
 {
     [super viewDidLoad];
     
+    MHBagMessageView *bMView = [[MHBagMessageView alloc] init];
+    
+    self.view = bMView;
+    
+    bMView.accountName.delegate = self;
+    bMView.accountMoney.delegate = self;
+    
     [self layout];
     
     self.view.backgroundColor = [UIColor colorWithRed:250/255.0 green:255/255.0 blue:240/255.0 alpha:1.0];
     
+    
     self.accountName.delegate = self;
     self.accountMoney.delegate = self;
     
-    [self.navigationItem setTitle:[NSString stringWithFormat:@"填写%@账户信息",self.bagModel.type]];
+    [self.navigationItem setTitle:[NSString stringWithFormat:@"填写%@账户",self.bagModel.type]];
+    
+    
+    //添加确定按钮
+    //生成添加账户按钮
+    UIButton *itemBtn = [[UIButton alloc]initWithFrame:CGRectMake(0,0,50,30)];
+    itemBtn.titleLabel.text = @"确定";
+    [itemBtn setTitle:[NSString stringWithFormat:@"确定"] forState:UIControlStateNormal];
+    [itemBtn setTitleColor:[UIColor colorWithRed:0/255.0 green:99/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [itemBtn addTarget:self action:@selector(clickEvent)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:itemBtn];
+    self.navigationItem.rightBarButtonItem= rightItem;
+
+}
+
+- (void)clickEvent{
+    //插入数据到MH_ACCOUNT表中
+    
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 }
 
 - (void)layout{
@@ -48,7 +77,7 @@
         make.left.equalTo(weakSelf.view).with.offset(5);
         make.top.equalTo(70);
     }];
-    
+
     [self.view addSubview:self.accountMoney];
     [self.accountMoney makeConstraints:^(MASConstraintMaker *make){
         make.height.equalTo(44);
