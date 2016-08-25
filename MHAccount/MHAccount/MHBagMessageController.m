@@ -7,13 +7,13 @@
 //
 
 
-#define WEAKSELF __weak typeof(self) weakSelf = self;
+
 
 #import "MHBagMessageController.h"
 #import "MHDatabase.h"
 #import "MHBagMessageView.h"
 #import "MHBagModel.h"
-
+#import "Const.h"
 
 @interface MHBagMessageController()<UITextFieldDelegate>
 

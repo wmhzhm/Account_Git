@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#define WEAKSELF __weak typeof(self) weakSelf = self;
+
 @interface MHBagMessageView : UIView
 
 @property (nonatomic, strong)UITextField *accountName;

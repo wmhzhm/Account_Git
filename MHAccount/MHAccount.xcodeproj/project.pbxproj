@@ -70,6 +70,7 @@
 		2F6FE6961D6E9678004D449A /* MHUpDateBagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUpDateBagView.m; sourceTree = "<group>"; };
 		2F6FE6981D6E96D2004D449A /* MHUpDateBagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHUpDateBagViewController.h; sourceTree = "<group>"; };
 		2F6FE6991D6E96D2004D449A /* MHUpDateBagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUpDateBagViewController.m; sourceTree = "<group>"; };
+		2F6FE69B1D6EDA57004D449A /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		2F7D72021D5D73D300E048C5 /* MHAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7D72061D5D73D300E048C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F7D72081D5D73D300E048C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,6 +163,7 @@
 		2F7D72041D5D73D300E048C5 /* MHAccount */ = {
 			isa = PBXGroup;
 			children = (
+				2F6FE69B1D6EDA57004D449A /* Const.h */,
 				2F6FE6881D6BFB1A004D449A /* UIImage */,
 				2FEA38051D65A6A200324A40 /* 钱包 */,
 				2FAA38481D62E1EB000B19A1 /* 明细 */,

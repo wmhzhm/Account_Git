@@ -8,6 +8,7 @@
 
 #import "MHBagModel.h"
 
+
 @implementation MHBagModel
 - (instancetype)initWithDict:(NSDictionary *)dict
 {

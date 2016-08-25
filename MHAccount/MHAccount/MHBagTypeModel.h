@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#define WEAKSELF __weak typeof(self) weakSelf = self;
+#import "Const.h"
+
 @interface MHBagTypeModel : NSObject
 @property (nonatomic ,copy)NSString *type;//账户类型
 @property (nonatomic ,copy)NSString *img;//图片名称
