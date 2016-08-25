@@ -203,9 +203,9 @@
 		2FAA38481D62E1EB000B19A1 /* 明细 */ = {
 			isa = PBXGroup;
 			children = (
+				2FAA38491D62E3CC000B19A1 /* controller */,
 				2FAA384B1D62E3DD000B19A1 /* View */,
 				2FAA384A1D62E3D3000B19A1 /* Model */,
-				2FAA38491D62E3CC000B19A1 /* controller */,
 			);
 			name = "明细";
 			sourceTree = "<group>";

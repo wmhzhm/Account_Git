@@ -33,7 +33,7 @@
     
 //    self.oldModel = [[MHBagModel alloc] init];
     
-    [self.navigationItem setTitle:[NSString stringWithFormat:@"修改%@账户",self.outModel.type]];
+    [self.navigationItem setTitle:[NSString stringWithFormat:@"修改%@账户",_inModel.type]];
     
     [self addOKBtn];
 }
@@ -59,7 +59,7 @@
         return;
     }else{
         for (MHBagModel *models in _accountArray) {
-            if ([self.bMView.accountName.text isEqualToString:models.type]) {
+            if ([self.bMView.accountName.text isEqualToString:models.type] && ![self.bMView.accountName.text isEqualToString:_inModel.type]) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"账户已存在" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
                 [alert show];
                 return;
@@ -76,7 +76,6 @@
     
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 }
-
 
 - (void)upDateDB
 {

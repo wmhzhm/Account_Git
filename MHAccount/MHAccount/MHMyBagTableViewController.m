@@ -103,6 +103,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        return;
+    }
     MHBagModel *model = _accountArray[indexPath.row - 1];
     
     MHUpDateBagViewController *upDateBagController = [[MHUpDateBagViewController alloc] init];

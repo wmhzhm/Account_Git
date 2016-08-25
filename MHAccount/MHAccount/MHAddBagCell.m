@@ -24,7 +24,7 @@
 #define     WHITE ([UIColor colorWithRed:250/255.0 green:255/255.0 blue:240/255.0 alpha:1.0]);
 #define     DOUGELLO ([UIColor colorWithRed:235/255.0 green:142/255.0 blue:85/255.0 alpha:1.0]);
 #define     DEEPBLUE ([UIColor colorWithRed:51/255.0 green:161/255.0 blue:201/255.0 alpha:1.0]);
-#define     TPMATO ([UIColor colorWithRed:255/255.0 green:99/255.0 blue:71/255.0 alpha:1.0]);
+#define     TPMATO ([UIColor colorWithRed:255/255.0 green:112/255.0 blue:71/255.0 alpha:1.0]);
 #define     LAVENDER ([UIColor colorWithRed:218/255.0 green:112/255.0 blue:214/255.0 alpha:1.0]);
 
 @implementation MHAddBagCell
