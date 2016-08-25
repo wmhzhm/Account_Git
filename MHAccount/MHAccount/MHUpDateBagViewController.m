@@ -1,49 +1,44 @@
 //
-//  MHBagMessageController.m
+//  MHUpDateBagViewController.m
 //  MHAccount
 //
-//  Created by 希亚许 on 16/8/23.
+//  Created by 希亚许 on 16/8/25.
 //  Copyright © 2016年 MinghanWu. All rights reserved.
 //
 
-
-#define WEAKSELF __weak typeof(self) weakSelf = self;
-
-#import "MHBagMessageController.h"
+#import "MHUpDateBagViewController.h"
+#import "MHUpDateBagView.h"
 #import "MHDatabase.h"
-#import "MHBagMessageView.h"
-#import "MHBagModel.h"
 
-
-@interface MHBagMessageController()<UITextFieldDelegate>
-
-@property (nonatomic, strong)MHBagTypeModel *bagTypeModel;
-@property (nonatomic ,strong)MHBagMessageView *bMView;
+@interface MHUpDateBagViewController ()<UITextFieldDelegate>
+//@property (nonatomic ,strong)MHBagModel *oldModel;
+@property (nonatomic, strong)MHBagModel *outModel;
+@property (nonatomic ,strong)MHUpDateBagView *bMView;
 @property (nonatomic ,strong)NSMutableArray *accountArray;
-
 @end
 
-@implementation MHBagMessageController
-- (void)viewDidLoad
-{
+@implementation MHUpDateBagViewController
+
+- (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
-    
-    self.bMView = [[MHBagMessageView alloc] initWithFrame:self.view.frame];
+    self.bMView = [[MHUpDateBagView alloc] initWithFrame:self.view.frame];
     self.view = self.bMView;
+    _bMView.model = self.inModel;
     
-    
+    _accountArray = [MHDatabase searchAccount];
     self.bMView.accountName.delegate = self;
     self.bMView.accountMoney.delegate = self;
     
-     _accountArray = [MHDatabase searchAccount];
+//    self.oldModel = [[MHBagModel alloc] init];
     
-    [self.navigationItem setTitle:[NSString stringWithFormat:@"填写%@账户",self.bagTypeModel.type]];
-    
+    [self.navigationItem setTitle:[NSString stringWithFormat:@"修改%@账户",self.outModel.type]];
     
     [self addOKBtn];
 }
 
+//需要修改
 - (void)addOKBtn
 {
     //添加确定按钮
@@ -51,19 +46,15 @@
     itemBtn.titleLabel.text = @"确定";
     [itemBtn setTitle:[NSString stringWithFormat:@"确定"] forState:UIControlStateNormal];
     [itemBtn setTitleColor:[UIColor colorWithRed:0/255.0 green:99/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
-    [itemBtn addTarget:self action:@selector(clickEvent)forControlEvents:UIControlEventTouchUpInside];
+    [itemBtn addTarget:self action:@selector(clickUpDateEvent)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:itemBtn];
     self.navigationItem.rightBarButtonItem= rightItem;
-    
 }
 
-
-
-- (void)clickEvent{
+- (void)clickUpDateEvent{
     
     if (self.bMView.accountName.text.length == 0) {
         //发出警告
-//        self.bMView.accountName.placeholder = [NSString stringWithFormat:@"请输入账户类型名称"];
         self.bMView.accountName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"*请输入账户类型名称" attributes:@{NSForegroundColorAttributeName: [UIColor redColor]}];
         return;
     }else{
@@ -77,27 +68,31 @@
     }
     if (self.bMView.accountMoney.text.length == 0) {
         //发出警告
-         self.bMView.accountName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"*请输入账户余额" attributes:@{NSForegroundColorAttributeName: [UIColor redColor]}];
+        self.bMView.accountName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"*请输入账户余额" attributes:@{NSForegroundColorAttributeName: [UIColor redColor]}];
         return;
     }
+    [self upDateDB];
     
-    
-    //插入数据到MH_ACCOUNT表中
-    [self insertDB];
     
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 }
 
-- (void)insertDB
-{
-    MHBagModel *model = [[MHBagModel alloc] init];
-    model.type = self.bMView.accountName.text;
-    model.img = self.bagTypeModel.img;
-    model.color = self.bMView.colorNum;
-    float money = [self.bMView.accountMoney.text floatValue];
-    model.money = [NSString stringWithFormat:@"%.2f",money];
-    [MHDatabase addBagModel:model];
 
+- (void)upDateDB
+{
+    self.outModel.type = self.bMView.accountName.text;
+    self.outModel.color = self.bMView.colorNum;
+    float money = [self.bMView.accountMoney.text floatValue];
+    self.outModel.money = [NSString stringWithFormat:@"%.2f",money];
+    
+    [MHDatabase upDateOldBagModel:_inModel ToNewBagModel:_outModel];
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -106,21 +101,17 @@
 }
 
 
-
-/**
- *  接受选择钱包正向传递的模型
- */
-- (void)setModel:(MHBagTypeModel *)model
+-(MHBagModel *)outModel
 {
-    _bagTypeModel = model;
+    if (!_outModel) {
+        _outModel = [[MHBagModel alloc] init];
+    }
+    return _outModel;
 }
 
 
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)setInModel:(MHBagModel *)inModel
 {
-    [self.view endEditing:YES];
-    return YES;
+    _inModel = inModel;
 }
-
 @end

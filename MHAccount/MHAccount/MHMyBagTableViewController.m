@@ -8,6 +8,7 @@
 
 #import "MHMyBagTableViewController.h"
 #import "MHAddBagController.h"
+#import "MHUpDateBagViewController.h"
 #import "MHDatabase.h"
 #import "MHBagCell.h"
 #import "MHBagModel.h"
@@ -97,5 +98,18 @@
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath ,nil] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView reloadData];
     }
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MHBagModel *model = _accountArray[indexPath.row - 1];
+    
+    MHUpDateBagViewController *upDateBagController = [[MHUpDateBagViewController alloc] init];
+    
+    upDateBagController.inModel = model;
+    upDateBagController.row = indexPath.row;
+    
+    [self.navigationController pushViewController:upDateBagController animated:YES];
 }
 @end

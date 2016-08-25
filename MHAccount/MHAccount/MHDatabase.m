@@ -156,6 +156,14 @@
     [db close];
 }
 
++ (void)upDateOldBagModel:(MHBagModel*)oldModel ToNewBagModel:(MHBagModel*)newModel
+{
+    FMDatabase *db = [self myDB];
+    [db open];
+    [db executeUpdate:@"UPDATE MH_ACCOUNT SET ACCOUNT_TYPE=?,ACCOUNT_COLOR=?,ACCOUNT_MONEY=? WHERE ACCOUNT_TYPE = ?",[NSString stringWithFormat:@"%@",newModel.type],[NSString stringWithFormat:@"%d",newModel.color],[NSString stringWithFormat:@"%@",newModel.money],[NSString stringWithFormat:@"%@",oldModel.type]];
+    [db close];
+}
+
 + (void)deleteBagModel:(MHBagModel *)model
 {
     FMDatabase *db = [self myDB];
