@@ -37,7 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     //获取账户对象组
-    _accountArray = [[MHDatabase searchAccount] copy];
+    _accountArray = [MHDatabase searchAccount];
     
     [[self tableView] reloadData];
 }
@@ -63,12 +63,39 @@
         
         if (!cell) {
             cell = [[MHBagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        }
             if (indexPath.row == 0) {
                 [MHBagCell sumMoneyCell:cell WithAccount:_accountArray];
             }else{
                 cell.bagModel = _accountArray[indexPath.row - 1];
             }
-        }
     return cell;
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //获取数据模型
+        MHBagModel *model = _accountArray[indexPath.row - 1];
+            //删除模型数组内该模型对象
+//        NSInteger rows = indexPath.row;
+        [self.accountArray removeObjectAtIndex:[indexPath row] - 1];
+            //删除数据库中对应数据
+        [MHDatabase deleteBagModel:model];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath ,nil] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView reloadData];
+    }
 }
 @end

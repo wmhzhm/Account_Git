@@ -99,8 +99,7 @@
  *
  *  @return 返回一个含有所有账户模型对象的数组
  */
-+ (NSArray*)searchAccount{
-    NSArray *array = [[NSArray alloc] init];
++ (NSMutableArray*)searchAccount{
     NSMutableArray *mArray = [[NSMutableArray alloc] init];
     FMDatabase *db = [self myDB];
     
@@ -117,10 +116,10 @@
         
         [mArray addObject:model];
     }
-    array = [mArray copy];
+
     [res close];
     [db close];
-    return array;
+    return mArray;
 }
 /**
  *  查询当前所有钱包分类
@@ -128,8 +127,7 @@
  *  @return 返回含有所有钱包分类模型对象的数组
  */
 
-+ (NSArray *)searchBagType{
-    NSArray *array = [[NSArray alloc] init];
++ (NSMutableArray *)searchBagType{
     NSMutableArray *mArray = [[NSMutableArray alloc] init];
     FMDatabase *db = [self myDB];
     
@@ -144,10 +142,9 @@
         model.color = [res intForColumn:@"COLOR"];
         [mArray addObject:model];
     }
-    array = [mArray copy];
     [res close];
     [db close];
-    return array;
+    return mArray;
 }
 
 
@@ -156,6 +153,14 @@
     FMDatabase *db = [self myDB];
     [db open];
     [db executeUpdate:@"insert into MH_ACCOUNT (ACCOUNT_TYPE,ACCOUNT_IMG,ACCOUNT_COLOR,ACCOUNT_MONEY) VALUES (?,?,?,?)",[NSString stringWithFormat:@"%@",model.type],[NSString stringWithFormat:@"%@",model.img],[NSString stringWithFormat:@"%d",model.color],[NSString stringWithFormat:@"%@",model.money]];
+    [db close];
+}
+
++ (void)deleteBagModel:(MHBagModel *)model
+{
+    FMDatabase *db = [self myDB];
+    [db open];
+    [db executeUpdate:@"DELETE FROM MH_ACCOUNT WHERE ACCOUNT_TYPE = ? AND ACCOUNT_IMG = ? AND ACCOUNT_COLOR = ? AND ACCOUNT_MONEY = ?",[NSString stringWithFormat:@"%@",model.type],[NSString stringWithFormat:@"%@",model.img],[NSString stringWithFormat:@"%d",model.color],[NSString stringWithFormat:@"%@",model.money]];
     [db close];
 }
 @end

@@ -61,13 +61,13 @@
     
     if (self.bMView.accountName.text.length == 0) {
         //发出警告
-        
-        
+//        self.bMView.accountName.placeholder = [NSString stringWithFormat:@"请输入账户类型名称"];
+        self.bMView.accountName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"*请输入账户类型名称" attributes:@{NSForegroundColorAttributeName: [UIColor redColor]}];
         return;
     }
     if (self.bMView.accountMoney.text.length == 0) {
         //发出警告
-        
+         self.bMView.accountName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"*请输入账户余额" attributes:@{NSForegroundColorAttributeName: [UIColor redColor]}];
         return;
     }
     //插入数据到MH_ACCOUNT表中
