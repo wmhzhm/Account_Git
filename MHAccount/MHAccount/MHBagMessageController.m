@@ -44,6 +44,12 @@
     [self addOKBtn];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
 - (void)addOKBtn
 {
     //添加确定按钮

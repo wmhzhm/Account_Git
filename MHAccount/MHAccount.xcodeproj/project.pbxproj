@@ -138,6 +138,37 @@
 			name = UIImage;
 			sourceTree = "<group>";
 		};
+		2F6FE69C1D701B3C004D449A /* 添加单笔 */ = {
+			isa = PBXGroup;
+			children = (
+				2F6FE69F1D701B5C004D449A /* Model */,
+				2F6FE69E1D701B57004D449A /* View */,
+				2F6FE69D1D701B50004D449A /* Controller */,
+			);
+			name = "添加单笔";
+			sourceTree = "<group>";
+		};
+		2F6FE69D1D701B50004D449A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2F6FE69E1D701B57004D449A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2F6FE69F1D701B5C004D449A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		2F7D71F91D5D73D300E048C5 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +198,7 @@
 				2F6FE6881D6BFB1A004D449A /* UIImage */,
 				2FEA38051D65A6A200324A40 /* 钱包 */,
 				2FAA38481D62E1EB000B19A1 /* 明细 */,
+				2F6FE69C1D701B3C004D449A /* 添加单笔 */,
 				2FAA38581D640935000B19A1 /* Other */,
 				2F7D72081D5D73D300E048C5 /* AppDelegate.h */,
 				2F7D72091D5D73D300E048C5 /* AppDelegate.m */,

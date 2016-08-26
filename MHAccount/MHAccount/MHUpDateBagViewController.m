@@ -38,6 +38,12 @@
     [self addOKBtn];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
 //需要修改
 - (void)addOKBtn
 {

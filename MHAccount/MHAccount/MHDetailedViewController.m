@@ -7,16 +7,33 @@
 //
 
 #import "MHDetailedViewController.h"
+#import "MHDetailView.h"
+@interface MHDetailedViewController()
 
-
+@property (nonatomic ,strong)MHDetailView *detailView;
+@end
 
 @implementation MHDetailedViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.detailView = [[MHDetailView alloc] initWithFrame:self.view.frame];
+    self.view = self.detailView;
     
     
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+- (MHDetailView *)detailView
+{
+    if (!_detailView) {
+        _detailView = [[MHDetailView alloc] initWithFrame:self.view.frame];
+    }
+    return _detailView;
+}
+
+
 @end
