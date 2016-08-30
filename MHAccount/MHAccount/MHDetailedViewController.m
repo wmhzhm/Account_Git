@@ -19,7 +19,13 @@
     [super viewDidLoad];
     self.detailView = [[MHDetailView alloc] initWithFrame:self.view.frame];
     self.view = self.detailView;
-    
+    [self.detailView.middleBtn addTarget:self action:@selector(clickAddBtn) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)clickAddBtn{
+    MHAddBillModelViewController *modelViewController = [[MHAddBillModelViewController alloc] init];
+    modelViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:modelViewController animated:YES completion:nil];
     
 }
 -(void)viewWillAppear:(BOOL)animated

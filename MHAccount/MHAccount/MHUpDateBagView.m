@@ -82,7 +82,7 @@
 {
     NSInteger btnNum = button.tag;
     self.colorNum = (int)btnNum;
-    NSLog(@"colorNum : %d",_colorNum);
+//    NSLog(@"colorNum : %d",_colorNum);
     switch ( btnNum ) {
         case 0:
             self.colorImg.backgroundColor = BLUE;

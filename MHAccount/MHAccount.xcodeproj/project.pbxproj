@@ -27,6 +27,8 @@
 		2FAA384E1D62E431000B19A1 /* MHDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA384D1D62E431000B19A1 /* MHDetailedViewController.m */; };
 		2FAA38541D62F9CC000B19A1 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA38531D62F9CC000B19A1 /* MHTabBarController.m */; };
 		2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA38561D6308C2000B19A1 /* MHDetailView.m */; };
+		2FB7D6DE1D755D3700496DEF /* MHAddBillModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */; };
+		2FB7D6E11D755FCD00496DEF /* MHAddBillView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7D6E01D755FCD00496DEF /* MHAddBillView.m */; };
 		2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */; };
 		2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380D1D65A83500324A40 /* MHBagCell.m */; };
 		2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA38101D65AA2F00324A40 /* MHBagModel.m */; };
@@ -91,6 +93,10 @@
 		2FAA38531D62F9CC000B19A1 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarController.m; sourceTree = "<group>"; };
 		2FAA38551D6308C2000B19A1 /* MHDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDetailView.h; sourceTree = "<group>"; };
 		2FAA38561D6308C2000B19A1 /* MHDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDetailView.m; sourceTree = "<group>"; };
+		2FB7D6DC1D755D3700496DEF /* MHAddBillModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBillModelViewController.h; sourceTree = "<group>"; };
+		2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAddBillModelViewController.m; sourceTree = "<group>"; };
+		2FB7D6DF1D755FCD00496DEF /* MHAddBillView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBillView.h; sourceTree = "<group>"; };
+		2FB7D6E01D755FCD00496DEF /* MHAddBillView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAddBillView.m; sourceTree = "<group>"; };
 		2FEA38091D65A73600324A40 /* MHMyBagTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMyBagTableViewController.h; sourceTree = "<group>"; };
 		2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMyBagTableViewController.m; sourceTree = "<group>"; };
 		2FEA380C1D65A83500324A40 /* MHBagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagCell.h; sourceTree = "<group>"; };
@@ -249,6 +255,8 @@
 			children = (
 				2FAA384C1D62E431000B19A1 /* MHDetailedViewController.h */,
 				2FAA384D1D62E431000B19A1 /* MHDetailedViewController.m */,
+				2FB7D6DC1D755D3700496DEF /* MHAddBillModelViewController.h */,
+				2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -265,6 +273,8 @@
 			children = (
 				2FAA38551D6308C2000B19A1 /* MHDetailView.h */,
 				2FAA38561D6308C2000B19A1 /* MHDetailView.m */,
+				2FB7D6DF1D755FCD00496DEF /* MHAddBillView.h */,
+				2FB7D6E01D755FCD00496DEF /* MHAddBillView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -533,11 +543,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB7D6DE1D755D3700496DEF /* MHAddBillModelViewController.m in Sources */,
 				2F6FE6941D6D7B23004D449A /* MHBagMessageView.m in Sources */,
 				2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */,
 				2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */,
 				2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */,
 				2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */,
+				2FB7D6E11D755FCD00496DEF /* MHAddBillView.m in Sources */,
 				2FAA384E1D62E431000B19A1 /* MHDetailedViewController.m in Sources */,
 				2F7D72071D5D73D300E048C5 /* main.m in Sources */,
 				2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */,

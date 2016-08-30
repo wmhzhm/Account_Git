@@ -18,16 +18,10 @@
 #import "Const.h"
 #import <Masonry.h>
 
+
 @interface MHDetailView()
 
-@property(nonatomic,strong)UIView *topView;//上部视图
-@property (nonatomic ,strong)UIImageView *headImg;//上部视图背景图
-@property (nonatomic ,strong)UILabel *usedMoney;//”本月支出“
-@property (nonatomic ,strong)UIButton *usedMoneyNum;//本月支出金额
-@property (nonatomic,strong)UILabel *inMoney;//“本月收入”
-@property (nonatomic, strong)UILabel *inMoneyNum;//本月收入金额
-@property (nonatomic ,strong) UILabel *budgetBalance;//预算余额
-@property (nonatomic,strong)UILabel *budgetBalanceNum;//预算余额金额
+
 
 @end
 @implementation MHDetailView
@@ -93,6 +87,14 @@
     [self.budgetBalance makeConstraints:^(MASConstraintMaker *make){
         make.right.equalTo(_budgetBalanceNum.left).with.offset(-5);
         make.bottom.equalTo(-5);
+    }];
+    
+    //中部按钮
+    [self addSubview:self.middleBtn];
+    [self.middleBtn makeConstraints:^(MASConstraintMaker *make){
+        make.centerX.equalTo(weakSelf.centerX);
+        make.left.equalTo(30);
+        make.top.equalTo(_topView.bottom).with.offset(10);
     }];
 }
 
@@ -178,4 +180,27 @@
     }
     return _budgetBalanceNum;
 }
+
+- (UITableView *)lowerView
+{
+    if (!_lowerView) {
+        _lowerView = [[UITableView alloc] init];
+    }
+    return  _lowerView;
+}
+
+- (UIButton *)middleBtn
+{
+    if (!_middleBtn) {
+        _middleBtn = [[UIButton alloc] init];
+        _middleBtn.layer.cornerRadius = 10;
+        _middleBtn.layer.masksToBounds = YES;
+        [_middleBtn setTitle:@"记上一笔" forState:UIControlStateNormal];
+        [_middleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_middleBtn setBackgroundColor:[UIColor orangeColor]];
+        [_middleBtn setFont:[UIFont systemFontOfSize:30]];
+    }
+    return _middleBtn;
+}
+
 @end
