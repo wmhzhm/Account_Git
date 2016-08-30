@@ -9,7 +9,7 @@
         <scene sceneID="gMo-MI-dli">
             <objects>
                 <navigationController id="bVs-r2-bgU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="明细" id="Jxk-BZ-pRu"/>
+                    <tabBarItem key="tabBarItem" title="明细" image="detail_item_img" id="Jxk-BZ-pRu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xIf-fa-zuA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -26,7 +26,7 @@
         <scene sceneID="dCd-N6-BMK">
             <objects>
                 <navigationController id="yAS-uN-B8w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="钱包" id="IYA-bk-R4H"/>
+                    <tabBarItem key="tabBarItem" title="钱包" image="bag_item_img" id="IYA-bk-R4H"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RKi-Wq-bIn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -97,4 +97,8 @@
             <point key="canvasLocation" x="507" y="701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bag_item_img" width="24" height="24"/>
+        <image name="detail_item_img" width="21" height="21"/>
+    </resources>
 </document>

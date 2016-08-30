@@ -11,6 +11,9 @@
 
 
 #define LABEL_FONT_SIZE 12
+#define LABEL_USEDMONEYNUM_FONT 30
+
+
 #import "MHDetailView.h"
 #import "Const.h"
 #import <Masonry.h>
@@ -18,10 +21,14 @@
 @interface MHDetailView()
 
 @property(nonatomic,strong)UIView *topView;//上部视图
-@property (nonatomic ,strong)UIImageView *headImg;
-@property (nonatomic ,strong)UILabel *usedMoney;
-@property (nonatomic,strong)UILabel *inMoney;
-@property (nonatomic, strong)UILabel *inMoneyNum;
+@property (nonatomic ,strong)UIImageView *headImg;//上部视图背景图
+@property (nonatomic ,strong)UILabel *usedMoney;//”本月支出“
+@property (nonatomic ,strong)UIButton *usedMoneyNum;//本月支出金额
+@property (nonatomic,strong)UILabel *inMoney;//“本月收入”
+@property (nonatomic, strong)UILabel *inMoneyNum;//本月收入金额
+@property (nonatomic ,strong) UILabel *budgetBalance;//预算余额
+@property (nonatomic,strong)UILabel *budgetBalanceNum;//预算余额金额
+
 @end
 @implementation MHDetailView
 - (instancetype)initWithFrame:(CGRect)frame
@@ -58,11 +65,35 @@
     
     [self.topView addSubview:self.inMoneyNum];
     [self.inMoneyNum makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(_inMoney.right);
+        make.left.equalTo(_inMoney.right).with.offset(5);
         make.centerY.equalTo(_inMoney.centerY);
     }];
     
+    [self.topView addSubview:self.usedMoneyNum];
+    [self.usedMoneyNum makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(_inMoney.top).with.offset(-10);
+        make.left.equalTo(5);
+    }];
     
+    [self.topView addSubview:self.usedMoney];
+    [self.usedMoney makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.equalTo(_usedMoneyNum.top);
+        make.left.equalTo(5);
+    }];
+    
+    
+    [self.topView addSubview:self.budgetBalanceNum];
+    [self.budgetBalanceNum makeConstraints:^(MASConstraintMaker *make){
+        make.right.equalTo(-5);
+        make.bottom.equalTo(-5);
+    }];
+    
+    
+    [self.topView addSubview:self.budgetBalance];
+    [self.budgetBalance makeConstraints:^(MASConstraintMaker *make){
+        make.right.equalTo(_budgetBalanceNum.left).with.offset(-5);
+        make.bottom.equalTo(-5);
+    }];
 }
 
 - (UIView *)topView
@@ -78,6 +109,7 @@
 {
     if (!_headImg) {
         _headImg = [[UIImageView alloc] init];
+        _headImg.image = [UIImage imageNamed:@"topBcg_img"];
     }
     return _headImg;
 }
@@ -86,17 +118,28 @@
     if (!_usedMoney) {
         _usedMoney = [[UILabel alloc] init];
         _usedMoney.text = @"本月支出";
-        _usedMoney.textColor = [UIColor grayColor];
+        _usedMoney.textColor = [UIColor whiteColor];
         _usedMoney.font = [UIFont systemFontOfSize:LABEL_FONT_SIZE];
     }
     return _usedMoney;
+}
+
+- (UIButton *)usedMoneyNum
+{
+    if (!_usedMoneyNum) {
+        _usedMoneyNum = [[UIButton alloc] init];
+        [_usedMoneyNum setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _usedMoneyNum.titleLabel.font = [UIFont systemFontOfSize:LABEL_USEDMONEYNUM_FONT];
+        [_usedMoneyNum setTitle:@"00.00" forState:UIControlStateNormal];
+    }
+    return _usedMoneyNum;
 }
 
 - (UILabel *)inMoney{
     if (!_inMoney) {
         _inMoney = [[UILabel alloc] init];
         _inMoney.text = [NSString stringWithFormat:@"本月收入"];
-        _inMoney.textColor = [UIColor grayColor];
+        _inMoney.textColor = [UIColor whiteColor];
         _inMoney.font = [UIFont systemFontOfSize:LABEL_FONT_SIZE];
     }
     return _inMoney;
@@ -106,11 +149,33 @@
 {
     if (!_inMoneyNum) {
         _inMoneyNum = [[UILabel alloc] init];
-        _inMoneyNum.textColor = [UIColor grayColor];
+        _inMoneyNum.textColor = [UIColor whiteColor];
         _inMoneyNum.text = @"00.00";
         _inMoneyNum.font = [UIFont systemFontOfSize:LABEL_FONT_SIZE];
         _inMoneyNum.textAlignment = UITextAlignmentRight;
     }
     return _inMoneyNum;
+}
+
+-(UILabel *)budgetBalance
+{
+    if (!_budgetBalance) {
+        _budgetBalance = [[UILabel alloc] init];
+        _budgetBalance.textColor = [UIColor whiteColor];
+        _budgetBalance.font = [UIFont systemFontOfSize:LABEL_FONT_SIZE];
+        _budgetBalance.text = @"本月预算余额";
+    }
+    return _budgetBalance;
+}
+
+- (UILabel *)budgetBalanceNum{
+    if (!_budgetBalanceNum) {
+        _budgetBalanceNum = [[UILabel alloc] init];
+        _budgetBalanceNum.textColor = [UIColor whiteColor];
+        _budgetBalanceNum.text = @"00.00";
+        _budgetBalanceNum.font  = [UIFont systemFontOfSize:LABEL_FONT_SIZE];
+        _budgetBalanceNum.textAlignment = UITextAlignmentRight;
+    }
+    return _budgetBalanceNum;
 }
 @end

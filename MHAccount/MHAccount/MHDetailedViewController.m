@@ -25,6 +25,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
+    
 }
 
 - (MHDetailView *)detailView

@@ -39,7 +39,7 @@
 {
     //获取账户对象组
     _accountArray = [MHDatabase searchAccount];
-    
+    self.tabBarController.tabBar.hidden = NO;
     [[self tableView] reloadData];
 }
 
