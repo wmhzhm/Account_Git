@@ -55,6 +55,13 @@
         make.width.equalTo(weakSelf).multipliedBy(0.5);
     }];
     
+    [self addSubview:self.inOrOut];
+    [self.inOrOut makeConstraints:^(MASConstraintMaker *make){
+        make.centerY.equalTo(_back.centerY);
+        make.centerX.equalTo(weakSelf);
+        make.left.equalTo(_back.right).with.offset(40);
+        make.bottom.equalTo(_lineView.top).with.offset(-5);
+    }];
 }
 
 - (UIButton *)back{
@@ -81,5 +88,15 @@
         _lineView.backgroundColor = [UIColor grayColor];
     }
     return _lineView;
+}
+
+- (UISegmentedControl *)inOrOut
+{
+    if (!_inOrOut) {
+        NSArray *arr = [[NSArray alloc] initWithObjects:@"收入",@"支出", nil];
+        _inOrOut = [[UISegmentedControl alloc] initWithItems:arr];
+        _inOrOut.selectedSegmentIndex = 0;
+    }
+    return _inOrOut;
 }
 @end

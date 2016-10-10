@@ -12,4 +12,5 @@
 @property (nonatomic,strong)UIButton *back;
 @property (nonatomic ,strong)UISegmentedControl *segmentedControl;
 @property (nonatomic ,strong)UITextField *moneyTextField;
+@property (nonatomic,strong)UISegmentedControl *inOrOut;
 @end
