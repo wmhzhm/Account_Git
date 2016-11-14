@@ -157,6 +157,8 @@
 		2F6FE69D1D701B50004D449A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2FB7D6DC1D755D3700496DEF /* MHAddBillModelViewController.h */,
+				2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -164,6 +166,8 @@
 		2F6FE69E1D701B57004D449A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FB7D6DF1D755FCD00496DEF /* MHAddBillView.h */,
+				2FB7D6E01D755FCD00496DEF /* MHAddBillView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -251,8 +255,6 @@
 			children = (
 				2FAA384C1D62E431000B19A1 /* MHDetailedViewController.h */,
 				2FAA384D1D62E431000B19A1 /* MHDetailedViewController.m */,
-				2FB7D6DC1D755D3700496DEF /* MHAddBillModelViewController.h */,
-				2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -269,8 +271,6 @@
 			children = (
 				2FAA38551D6308C2000B19A1 /* MHDetailView.h */,
 				2FAA38561D6308C2000B19A1 /* MHDetailView.m */,
-				2FB7D6DF1D755FCD00496DEF /* MHAddBillView.h */,
-				2FB7D6E01D755FCD00496DEF /* MHAddBillView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";

@@ -11,7 +11,7 @@
             <objects>
                 <navigationController id="bVs-r2-bgU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="明细" image="detail_item_img" id="Jxk-BZ-pRu"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xIf-fa-zuA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xIf-fa-zuA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -28,7 +28,7 @@
             <objects>
                 <navigationController id="yAS-uN-B8w" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="钱包" image="bag_item_img" id="IYA-bk-R4H"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RKi-Wq-bIn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RKi-Wq-bIn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
