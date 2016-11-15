@@ -28,7 +28,7 @@
 @property (nonatomic, assign, getter=isIcome) BOOL income;
 //headView
 @property (nonatomic, strong) TMCreateHeaderView *headerView;
-
+@property (nonatomic, strong) UIView *headeView;
 
 
 @end
@@ -62,12 +62,6 @@
     }];
     
     
-    [self addSubview:self.moneyTextField];
-    [_moneyTextField makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(_lineView.bottom).with.offset(5);
-        make.left.equalTo(5);
-        make.width.equalTo(weakSelf).multipliedBy(0.5);
-    }];
     //出账类型按钮
     [self addSubview:self.outComeBtn];
     [self.outComeBtn makeConstraints:^(MASConstraintMaker *make){
@@ -83,12 +77,24 @@
     }];
     
     //头部视图
-        self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
-    [self addSubview:self.headerView];
-        [self.headerView makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(weakSelf);
-        make.top.equalTo(_lineView.bottom);
+    [self addSubview:self.headeView];
+    [self.headeView makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(_lineView.bottom).with.offset(0);
+        make.centerX.equalTo(weakSelf);
+        make.left.equalTo(0);
+        make.height.equalTo(60);
     }];
+    
+    
+    
+    
+    self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
+    [self.headeView addSubview:self.headerView];
+//        [self.headerView makeConstraints:^(MASConstraintMaker *make){
+//        make.left.equalTo(self.headeView.left);
+//            make.top.equalTo(self.headeView.top);
+////        make.top.equalTo(_lineView.bottom);
+//    }];
     [self bringSubviewToFront:self.headerView];
 
     
@@ -104,14 +110,13 @@
     return _back;
 }
 
-- (UITextField *)moneyTextField{
-    if (!_moneyTextField) {
-        _moneyTextField = [[UITextField alloc] init];
-        _moneyTextField.placeholder = [NSString stringWithFormat:@"00.00"];
+- (UIView *)headeView{
+    if (!_headeView) {
+        _headeView = [[UIView alloc] init];
+        _headeView.backgroundColor = [UIColor whiteColor];
     }
-    return _moneyTextField;
+    return _headeView;
 }
-
 - (UIView *)lineView{
     if (!_lineView) {
         _lineView = [[UIView alloc] init];

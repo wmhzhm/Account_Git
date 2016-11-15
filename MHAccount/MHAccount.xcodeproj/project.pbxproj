@@ -40,6 +40,7 @@
 		2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380D1D65A83500324A40 /* MHBagCell.m */; };
 		2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA38101D65AA2F00324A40 /* MHBagModel.m */; };
 		65B795B5DEFD1A0C86811B08 /* libPods-MHAccount.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FDD1C2D24BEB953409CC4D /* libPods-MHAccount.a */; };
+		8BA73CC61DDB4E3500CAF5BE /* MHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA73CC51DDB4E3500CAF5BE /* MHCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +64,7 @@
 		2F33DB8D1D659017009B10BD /* MHDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDatabase.h; sourceTree = "<group>"; };
 		2F33DB8E1D659017009B10BD /* MHDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDatabase.m; sourceTree = "<group>"; };
 		2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		2F6C5E681DDA9F0700270C28 /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
+		2F6C5E681DDA9F0700270C28 /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = category.plist; path = MHAccountUITests/category.plist; sourceTree = SOURCE_ROOT; };
 		2F6FE6791D6AED37004D449A /* MHAddBagController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBagController.h; sourceTree = "<group>"; };
 		2F6FE67A1D6AED37004D449A /* MHAddBagController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAddBagController.m; sourceTree = "<group>"; };
 		2F6FE67F1D6AF9B2004D449A /* MHAddBagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBagCell.h; sourceTree = "<group>"; };
@@ -124,6 +125,8 @@
 		2FEA380F1D65AA2F00324A40 /* MHBagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagModel.h; sourceTree = "<group>"; };
 		2FEA38101D65AA2F00324A40 /* MHBagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBagModel.m; sourceTree = "<group>"; };
 		47FDD1C2D24BEB953409CC4D /* libPods-MHAccount.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MHAccount.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BA73CC41DDB4E3500CAF5BE /* MHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCategory.h; sourceTree = "<group>"; };
+		8BA73CC51DDB4E3500CAF5BE /* MHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCategory.m; sourceTree = "<group>"; };
 		D6289CC397615D06A22A8743 /* Pods-MHAccount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHAccount.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount.debug.xcconfig"; sourceTree = "<group>"; };
 		E1839BA412C8BEBA2E650329 /* Pods-MHAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHAccount.release.xcconfig"; path = "Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +194,8 @@
 			children = (
 				2FD4EEDA1DDABE9600D681B0 /* MHBill.h */,
 				2FD4EEDB1DDABE9600D681B0 /* MHBill.m */,
+				8BA73CC41DDB4E3500CAF5BE /* MHCategory.h */,
+				8BA73CC51DDB4E3500CAF5BE /* MHCategory.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -251,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				2F7D722A1D5D73D300E048C5 /* MHAccountUITests.m */,
-				2F6C5E681DDA9F0700270C28 /* category.plist */,
 				2F7D722C1D5D73D300E048C5 /* Info.plist */,
 			);
 			path = MHAccountUITests;
@@ -300,6 +304,7 @@
 				2F7D720E1D5D73D300E048C5 /* Main.storyboard */,
 				2F7D72111D5D73D300E048C5 /* Assets.xcassets */,
 				2F7D72131D5D73D300E048C5 /* LaunchScreen.storyboard */,
+				2F6C5E681DDA9F0700270C28 /* category.plist */,
 				2F7D72161D5D73D300E048C5 /* Info.plist */,
 				2F7D72051D5D73D300E048C5 /* Supporting Files */,
 				2F33DB8D1D659017009B10BD /* MHDatabase.h */,
@@ -442,12 +447,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F7D722F1D5D73D300E048C5 /* Build configuration list for PBXNativeTarget "MHAccount" */;
 			buildPhases = (
+				12BDED36F0DE2A8DE22D82F3 /* 📦 Check Pods Manifest.lock */,
 				931CBD9EC3BF3820720FFBA9 /* [CP] Check Pods Manifest.lock */,
 				2F7D71FE1D5D73D300E048C5 /* Sources */,
 				2F7D71FF1D5D73D300E048C5 /* Frameworks */,
 				2F7D72001D5D73D300E048C5 /* Resources */,
 				78A64630F238ADF34ECBB8E6 /* [CP] Embed Pods Frameworks */,
 				7B01A29A88CFF7156AA52232 /* [CP] Copy Pods Resources */,
+				9430EF38B5929857548AF45B /* 📦 Embed Pods Frameworks */,
+				A8C3FDD20251AECE0DB33634 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -565,6 +573,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		12BDED36F0DE2A8DE22D82F3 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		78A64630F238ADF34ECBB8E6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,6 +633,36 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		9430EF38B5929857548AF45B /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8C3FDD20251AECE0DB33634 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -640,6 +693,7 @@
 				2F6FE68E1D6C2B54004D449A /* MHBagMessageController.m in Sources */,
 				2FD055B61D79265D00DFFFEB /* UIImage+Image.m in Sources */,
 				2F6FE6811D6AF9B2004D449A /* MHAddBagCell.m in Sources */,
+				8BA73CC61DDB4E3500CAF5BE /* MHCategory.m in Sources */,
 				2FD4EEDC1DDABE9600D681B0 /* MHBill.m in Sources */,
 				2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */,
 			);

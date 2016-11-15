@@ -11,6 +11,5 @@
 @interface MHAddBillView : UIView
 @property (nonatomic,strong)UIButton *back;
 @property (nonatomic ,strong)UISegmentedControl *segmentedControl;
-@property (nonatomic ,strong)UITextField *moneyTextField;
 
 @end

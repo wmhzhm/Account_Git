@@ -8,7 +8,7 @@
 
 #import "MHAddBillModelViewController.h"
 #import "MHAddBillView.h"
-@interface MHAddBillModelViewController()<UITextFieldDelegate>
+@interface MHAddBillModelViewController()
 @property (nonatomic,strong)MHAddBillView *billView;
 @end
 @implementation MHAddBillModelViewController
@@ -19,7 +19,6 @@
     self.billView = [[MHAddBillView alloc] initWithFrame:self.view.frame];
     self.view = self.billView;
     [self.billView.back addTarget:self action:@selector(clickBack) forControlEvents:UIControlEventTouchUpInside];
-    _billView.moneyTextField.delegate = self;
     
 }
 
