@@ -83,14 +83,14 @@
     }];
     
     //头部视图
+        self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
     [self addSubview:self.headerView];
-    self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
-     [self bringSubviewToFront:self.headerView];
-    [self.headerView makeConstraints:^(MASConstraintMaker *make){
+        [self.headerView makeConstraints:^(MASConstraintMaker *make){
         make.left.equalTo(weakSelf);
         make.top.equalTo(_lineView.bottom);
     }];
-    
+    [self bringSubviewToFront:self.headerView];
+
     
 }
 #pragma mark - lazyInit
