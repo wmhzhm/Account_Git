@@ -15,8 +15,22 @@
 #import "MHAddBillView.h"
 #import "Const.h"
 #import <Masonry.h>
+#import "TMCreateHeaderView.h"
+
 @interface MHAddBillView()
 @property (nonatomic ,strong) UIView *lineView;
+
+//入账类型按钮
+@property (nonatomic, strong) UIButton *inComeBtn;
+//出账类型按钮
+@property (nonatomic ,strong) UIButton *outComeBtn;
+//目前Bill类型
+@property (nonatomic, assign, getter=isIcome) BOOL income;
+//headView
+@property (nonatomic, strong) TMCreateHeaderView *headerView;
+
+
+
 @end
 
 @implementation MHAddBillView
@@ -54,16 +68,32 @@
         make.left.equalTo(5);
         make.width.equalTo(weakSelf).multipliedBy(0.5);
     }];
-    
-    [self addSubview:self.inOrOut];
-    [self.inOrOut makeConstraints:^(MASConstraintMaker *make){
-        make.centerY.equalTo(_back.centerY);
-        make.centerX.equalTo(weakSelf);
-        make.left.equalTo(_back.right).with.offset(40);
-        make.bottom.equalTo(_lineView.top).with.offset(-5);
+    //出账类型按钮
+    [self addSubview:self.outComeBtn];
+    [self.outComeBtn makeConstraints:^(MASConstraintMaker *make){
+        make.centerX.equalTo(weakSelf.centerX).with.offset(-30);
+        make.bottom.equalTo(_lineView.bottom).with.offset(-5);
     }];
+    
+    //入账类型按钮
+    [self addSubview:self.inComeBtn];
+    [self.inComeBtn makeConstraints:^(MASConstraintMaker *make){
+        make.centerX.equalTo(weakSelf.centerX).with.offset(30);
+        make.bottom.equalTo(_lineView.bottom).with.offset(-5);
+    }];
+    
+    //头部视图
+    [self addSubview:self.headerView];
+    self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
+     [self bringSubviewToFront:self.headerView];
+    [self.headerView makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(weakSelf);
+        make.top.equalTo(_lineView.bottom);
+    }];
+    
+    
 }
-
+#pragma mark - lazyInit
 - (UIButton *)back{
     if (!_back) {
         _back = [[UIButton alloc] init];
@@ -89,14 +119,60 @@
     }
     return _lineView;
 }
-
-- (UISegmentedControl *)inOrOut
-{
-    if (!_inOrOut) {
-        NSArray *arr = [[NSArray alloc] initWithObjects:@"收入",@"支出", nil];
-        _inOrOut = [[UISegmentedControl alloc] initWithItems:arr];
-        _inOrOut.selectedSegmentIndex = 0;
+//出账类型按钮
+- (UIButton *)outComeBtn{
+    if (!_outComeBtn) {
+        _outComeBtn = [[UIButton alloc] init];
+        _outComeBtn.backgroundColor = [UIColor clearColor];
+        [_outComeBtn setTitle:@"支出" forState:UIControlStateNormal];
+        [_outComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_outComeBtn addTarget:self action:@selector(clickOutComeBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _inOrOut;
+    return _outComeBtn;
+}
+
+//入账类型按钮
+- (UIButton *)inComeBtn{
+    if(!_inComeBtn){
+        _inComeBtn = [[UIButton alloc] init];
+        _inComeBtn.backgroundColor = [UIColor clearColor];
+        [_inComeBtn setTitle:@"收入" forState:UIControlStateNormal];
+        [_inComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_inComeBtn addTarget:self action:@selector(clickIncomeBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _inComeBtn;
+}
+
+
+#pragma mark - 方法
+- (void)clickIncomeBtn:(UIButton *)sender {
+    NSLog(@"123");
+//    //* ------------ */
+//    TMCategory *firstIncomeCategory = [[TMDataBaseManager defaultManager] queryCategorysWithPaymentType:income].firstObject;
+//    self.selectedCategory = firstIncomeCategory;
+//    if (!self.isUpdade) {
+//        self.bill.isIncome = @YES;
+//    } else {
+//        self.income = YES;
+//    }
+//    //* ------------ */
+//    NSLog(@"click IncomeBtn");
+//    sender.selected = YES;
+//    self.expendBtn.selected = NO;
+//    [self.view bringSubviewToFront:self.incomeCategoryCollectionView];
+//    [self.view bringSubviewToFront:self.headerView];
+//    [self.view sendSubviewToBack:self.expendCategoryScrollView];
+//    
+//    [self.headerView categoryImageWithFileName:firstIncomeCategory.categoryImageFileNmae andCategoryName:firstIncomeCategory.categoryTitle];
+//    
+//    CCColorCube *imageColor = [[CCColorCube alloc] init];
+//    NSArray *colors = [imageColor extractColorsFromImage:firstIncomeCategory.categoryImage flags:CCAvoidBlack count:1];
+//    //* 设置HeaderView的背景颜色 */
+//    [self.headerView animationWithBgColor:colors.firstObject];
+//    self.pageController.numberOfPages = 1;
+//    [self.incomeCategoryCollectionView reloadData];
+}
+- (void)clickOutComeBtn:(UIButton *)sender{
+    
 }
 @end

@@ -20,6 +20,7 @@
     self.view = self.billView;
     [self.billView.back addTarget:self action:@selector(clickBack) forControlEvents:UIControlEventTouchUpInside];
     _billView.moneyTextField.delegate = self;
+    
 }
 
 

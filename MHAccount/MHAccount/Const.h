@@ -27,9 +27,9 @@
 #define     LAVENDER ([UIColor colorWithRed:218/255.0 green:112/255.0 blue:214/255.0 alpha:1.0]);
 
 
-#define TYPE_IMG_SIZE 28
-
-
+//#define TYPE_IMG_SIZE 28
+#define BillHeaderViewFrame CGRectMake(0, self.lineView.frame.origin.y, [UIScreen mainScreen].bounds.size.width, 60)
+#define kSelectColor [UIColor colorWithRed:0.907 green:0.454 blue:0.000 alpha:1.000]
 #define padding 10
 #define BTNPADDING 20
 #define COLORIMG_SIZE 30

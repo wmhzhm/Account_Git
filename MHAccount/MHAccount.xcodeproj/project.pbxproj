@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F33DB8E1D659017009B10BD /* MHDatabase.m */; };
 		2F33DB911D6592CB009B10BD /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */; };
+		2F6C5E691DDA9F0700270C28 /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6C5E681DDA9F0700270C28 /* category.plist */; };
 		2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE67A1D6AED37004D449A /* MHAddBagController.m */; };
 		2F6FE6811D6AF9B2004D449A /* MHAddBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE6801D6AF9B2004D449A /* MHAddBagCell.m */; };
 		2F6FE6841D6BE6A3004D449A /* MHBagTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FE6831D6BE6A3004D449A /* MHBagTypeModel.m */; };
@@ -32,6 +33,9 @@
 		2FD055B51D79265D00DFFFEB /* UIView+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD055B21D79265D00DFFFEB /* UIView+LBExtension.m */; };
 		2FD055B61D79265D00DFFFEB /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD055B41D79265D00DFFFEB /* UIImage+Image.m */; };
 		2FD055B91D79268300DFFFEB /* LBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD055B81D79268300DFFFEB /* LBTabBar.m */; };
+		2FD4EEDC1DDABE9600D681B0 /* MHBill.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEDB1DDABE9600D681B0 /* MHBill.m */; };
+		2FD4EEE21DDADD8C00D681B0 /* TMCreateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEE11DDADD8C00D681B0 /* TMCreateHeaderView.m */; };
+		2FD4EEE51DDADDD300D681B0 /* TMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEE41DDADDD300D681B0 /* TMButton.m */; };
 		2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */; };
 		2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380D1D65A83500324A40 /* MHBagCell.m */; };
 		2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA38101D65AA2F00324A40 /* MHBagModel.m */; };
@@ -59,6 +63,7 @@
 		2F33DB8D1D659017009B10BD /* MHDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDatabase.h; sourceTree = "<group>"; };
 		2F33DB8E1D659017009B10BD /* MHDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDatabase.m; sourceTree = "<group>"; };
 		2F33DB901D6592CB009B10BD /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		2F6C5E681DDA9F0700270C28 /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
 		2F6FE6791D6AED37004D449A /* MHAddBagController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBagController.h; sourceTree = "<group>"; };
 		2F6FE67A1D6AED37004D449A /* MHAddBagController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAddBagController.m; sourceTree = "<group>"; };
 		2F6FE67F1D6AF9B2004D449A /* MHAddBagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAddBagCell.h; sourceTree = "<group>"; };
@@ -106,6 +111,12 @@
 		2FD055B41D79265D00DFFFEB /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
 		2FD055B71D79268300DFFFEB /* LBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTabBar.h; sourceTree = "<group>"; };
 		2FD055B81D79268300DFFFEB /* LBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBTabBar.m; sourceTree = "<group>"; };
+		2FD4EEDA1DDABE9600D681B0 /* MHBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBill.h; sourceTree = "<group>"; };
+		2FD4EEDB1DDABE9600D681B0 /* MHBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBill.m; sourceTree = "<group>"; };
+		2FD4EEE01DDADD8C00D681B0 /* TMCreateHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCreateHeaderView.h; sourceTree = "<group>"; };
+		2FD4EEE11DDADD8C00D681B0 /* TMCreateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCreateHeaderView.m; sourceTree = "<group>"; };
+		2FD4EEE31DDADDD300D681B0 /* TMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMButton.h; sourceTree = "<group>"; };
+		2FD4EEE41DDADDD300D681B0 /* TMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMButton.m; sourceTree = "<group>"; };
 		2FEA38091D65A73600324A40 /* MHMyBagTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMyBagTableViewController.h; sourceTree = "<group>"; };
 		2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMyBagTableViewController.m; sourceTree = "<group>"; };
 		2FEA380C1D65A83500324A40 /* MHBagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagCell.h; sourceTree = "<group>"; };
@@ -147,9 +158,9 @@
 		2F6FE69C1D701B3C004D449A /* 添加单笔 */ = {
 			isa = PBXGroup;
 			children = (
-				2F6FE69F1D701B5C004D449A /* Model */,
-				2F6FE69E1D701B57004D449A /* View */,
+				2FD4EEE61DDADDF200D681B0 /* Other */,
 				2F6FE69D1D701B50004D449A /* Controller */,
+				2F6FE69F1D701B5C004D449A /* Model */,
 			);
 			name = "添加单笔";
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 			children = (
 				2FB7D6DC1D755D3700496DEF /* MHAddBillModelViewController.h */,
 				2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */,
+				2F6FE69E1D701B57004D449A /* View */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -166,6 +178,8 @@
 		2F6FE69E1D701B57004D449A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FD4EEE01DDADD8C00D681B0 /* TMCreateHeaderView.h */,
+				2FD4EEE11DDADD8C00D681B0 /* TMCreateHeaderView.m */,
 				2FB7D6DF1D755FCD00496DEF /* MHAddBillView.h */,
 				2FB7D6E01D755FCD00496DEF /* MHAddBillView.m */,
 			);
@@ -175,6 +189,8 @@
 		2F6FE69F1D701B5C004D449A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2FD4EEDA1DDABE9600D681B0 /* MHBill.h */,
+				2FD4EEDB1DDABE9600D681B0 /* MHBill.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -235,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				2F7D722A1D5D73D300E048C5 /* MHAccountUITests.m */,
+				2F6C5E681DDA9F0700270C28 /* category.plist */,
 				2F7D722C1D5D73D300E048C5 /* Info.plist */,
 			);
 			path = MHAccountUITests;
@@ -338,6 +355,15 @@
 				2F6FE68A1D6BFB53004D449A /* UIImage+Extension.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		2FD4EEE61DDADDF200D681B0 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4EEE31DDADDD300D681B0 /* TMButton.h */,
+				2FD4EEE41DDADDD300D681B0 /* TMButton.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		2FEA38051D65A6A200324A40 /* 钱包 */ = {
@@ -532,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6C5E691DDA9F0700270C28 /* category.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,8 +620,10 @@
 				2FB7D6DE1D755D3700496DEF /* MHAddBillModelViewController.m in Sources */,
 				2FD055B91D79268300DFFFEB /* LBTabBar.m in Sources */,
 				2F6FE6941D6D7B23004D449A /* MHBagMessageView.m in Sources */,
+				2FD4EEE21DDADD8C00D681B0 /* TMCreateHeaderView.m in Sources */,
 				2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */,
 				2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */,
+				2FD4EEE51DDADDD300D681B0 /* TMButton.m in Sources */,
 				2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */,
 				2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */,
 				2FB7D6E11D755FCD00496DEF /* MHAddBillView.m in Sources */,
@@ -611,6 +640,7 @@
 				2F6FE68E1D6C2B54004D449A /* MHBagMessageController.m in Sources */,
 				2FD055B61D79265D00DFFFEB /* UIImage+Image.m in Sources */,
 				2F6FE6811D6AF9B2004D449A /* MHAddBagCell.m in Sources */,
+				2FD4EEDC1DDABE9600D681B0 /* MHBill.m in Sources */,
 				2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
