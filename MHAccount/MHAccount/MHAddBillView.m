@@ -16,6 +16,7 @@
 #import "Const.h"
 #import <Masonry.h>
 #import "TMCreateHeaderView.h"
+#import "TMCategoryCollectionViewFlowLayout.h"
 
 @interface MHAddBillView()
 @property (nonatomic ,strong) UIView *lineView;
@@ -29,6 +30,7 @@
 //headView
 @property (nonatomic, strong) TMCreateHeaderView *headerView;
 @property (nonatomic, strong) UIView *headeView;
+
 
 
 @end
@@ -147,11 +149,34 @@
     }
     return _inComeBtn;
 }
+//入账CategoryCollectionView
+- (UICollectionView *)inComeCategoryCollectionView{
+    
+    if(!_inComeCategoryCollectionView){
+        _inComeCategoryCollectionView  = [[UICollectionView alloc] initWithFrame:kCollectionFrame collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+    }
+    return _inComeCategoryCollectionView;
+}
+//出账CategoryCollectionView
+- (UICollectionView *)outComeCategoryCollectionView{
+    
+    if(!_outComeCategoryCollectionView){
+        _outComeCategoryCollectionView  = [[UICollectionView alloc] initWithFrame:kCollectionFrame collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+    }
+    return _outComeCategoryCollectionView;
+}
 
+//出账CategoryCollectionView2
+- (UICollectionView *)outComeCategoryCollectionView2{
+    
+    if(!_outComeCategoryCollectionView2){
+        _outComeCategoryCollectionView2  = [[UICollectionView alloc] initWithFrame:kCollectionFrame collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+    }
+    return _outComeCategoryCollectionView2;
+}
 
 #pragma mark - 方法
 - (void)clickIncomeBtn:(UIButton *)sender {
-    NSLog(@"123");
 //    //* ------------ */
 //    TMCategory *firstIncomeCategory = [[TMDataBaseManager defaultManager] queryCategorysWithPaymentType:income].firstObject;
 //    self.selectedCategory = firstIncomeCategory;

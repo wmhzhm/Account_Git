@@ -36,6 +36,10 @@
 		2FD4EEDC1DDABE9600D681B0 /* MHBill.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEDB1DDABE9600D681B0 /* MHBill.m */; };
 		2FD4EEE21DDADD8C00D681B0 /* TMCreateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEE11DDADD8C00D681B0 /* TMCreateHeaderView.m */; };
 		2FD4EEE51DDADDD300D681B0 /* TMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEE41DDADDD300D681B0 /* TMButton.m */; };
+		2FD4EEED1DDBF48300D681B0 /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEEA1DDBF48300D681B0 /* CCColorCube.m */; };
+		2FD4EEEE1DDBF48300D681B0 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEEC1DDBF48300D681B0 /* CCLocalMaximum.m */; };
+		2FD4EEF11DDC370100D681B0 /* TMCategotyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEF01DDC370100D681B0 /* TMCategotyCollectionViewCell.m */; };
+		2FD4EEF41DDC5DFF00D681B0 /* TMCategoryCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4EEF31DDC5DFF00D681B0 /* TMCategoryCollectionViewFlowLayout.m */; };
 		2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */; };
 		2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380D1D65A83500324A40 /* MHBagCell.m */; };
 		2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA38101D65AA2F00324A40 /* MHBagModel.m */; };
@@ -118,6 +122,14 @@
 		2FD4EEE11DDADD8C00D681B0 /* TMCreateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCreateHeaderView.m; sourceTree = "<group>"; };
 		2FD4EEE31DDADDD300D681B0 /* TMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMButton.h; sourceTree = "<group>"; };
 		2FD4EEE41DDADDD300D681B0 /* TMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMButton.m; sourceTree = "<group>"; };
+		2FD4EEE91DDBF48300D681B0 /* CCColorCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCColorCube.h; sourceTree = "<group>"; };
+		2FD4EEEA1DDBF48300D681B0 /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
+		2FD4EEEB1DDBF48300D681B0 /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
+		2FD4EEEC1DDBF48300D681B0 /* CCLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocalMaximum.m; sourceTree = "<group>"; };
+		2FD4EEEF1DDC370100D681B0 /* TMCategotyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCategotyCollectionViewCell.h; sourceTree = "<group>"; };
+		2FD4EEF01DDC370100D681B0 /* TMCategotyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCategotyCollectionViewCell.m; sourceTree = "<group>"; };
+		2FD4EEF21DDC5DFF00D681B0 /* TMCategoryCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCategoryCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		2FD4EEF31DDC5DFF00D681B0 /* TMCategoryCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCategoryCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		2FEA38091D65A73600324A40 /* MHMyBagTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMyBagTableViewController.h; sourceTree = "<group>"; };
 		2FEA380A1D65A73600324A40 /* MHMyBagTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMyBagTableViewController.m; sourceTree = "<group>"; };
 		2FEA380C1D65A83500324A40 /* MHBagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagCell.h; sourceTree = "<group>"; };
@@ -185,6 +197,8 @@
 				2FD4EEE11DDADD8C00D681B0 /* TMCreateHeaderView.m */,
 				2FB7D6DF1D755FCD00496DEF /* MHAddBillView.h */,
 				2FB7D6E01D755FCD00496DEF /* MHAddBillView.m */,
+				2FD4EEEF1DDC370100D681B0 /* TMCategotyCollectionViewCell.h */,
+				2FD4EEF01DDC370100D681B0 /* TMCategotyCollectionViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -225,6 +239,7 @@
 		2F7D72041D5D73D300E048C5 /* MHAccount */ = {
 			isa = PBXGroup;
 			children = (
+				2FD4EEE71DDBF46600D681B0 /* Vendor */,
 				2FD055AC1D79260900DFFFEB /* TabBar */,
 				2F6FE69B1D6EDA57004D449A /* Const.h */,
 				2FEA38051D65A6A200324A40 /* 钱包 */,
@@ -365,10 +380,31 @@
 		2FD4EEE61DDADDF200D681B0 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				2FD4EEF21DDC5DFF00D681B0 /* TMCategoryCollectionViewFlowLayout.h */,
+				2FD4EEF31DDC5DFF00D681B0 /* TMCategoryCollectionViewFlowLayout.m */,
 				2FD4EEE31DDADDD300D681B0 /* TMButton.h */,
 				2FD4EEE41DDADDD300D681B0 /* TMButton.m */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		2FD4EEE71DDBF46600D681B0 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4EEE81DDBF47600D681B0 /* ColorClub */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		2FD4EEE81DDBF47600D681B0 /* ColorClub */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4EEE91DDBF48300D681B0 /* CCColorCube.h */,
+				2FD4EEEA1DDBF48300D681B0 /* CCColorCube.m */,
+				2FD4EEEB1DDBF48300D681B0 /* CCLocalMaximum.h */,
+				2FD4EEEC1DDBF48300D681B0 /* CCLocalMaximum.m */,
+			);
+			name = ColorClub;
 			sourceTree = "<group>";
 		};
 		2FEA38051D65A6A200324A40 /* 钱包 */ = {
@@ -674,12 +710,14 @@
 				2FD055B91D79268300DFFFEB /* LBTabBar.m in Sources */,
 				2F6FE6941D6D7B23004D449A /* MHBagMessageView.m in Sources */,
 				2FD4EEE21DDADD8C00D681B0 /* TMCreateHeaderView.m in Sources */,
+				2FD4EEF11DDC370100D681B0 /* TMCategotyCollectionViewCell.m in Sources */,
 				2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */,
 				2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */,
 				2FD4EEE51DDADDD300D681B0 /* TMButton.m in Sources */,
 				2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */,
 				2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */,
 				2FB7D6E11D755FCD00496DEF /* MHAddBillView.m in Sources */,
+				2FD4EEF41DDC5DFF00D681B0 /* TMCategoryCollectionViewFlowLayout.m in Sources */,
 				2FAA384E1D62E431000B19A1 /* MHDetailedViewController.m in Sources */,
 				2F7D72071D5D73D300E048C5 /* main.m in Sources */,
 				2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */,
@@ -688,6 +726,7 @@
 				2F6FE68B1D6BFB53004D449A /* UIImage+Extension.m in Sources */,
 				2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */,
 				2FD055B51D79265D00DFFFEB /* UIView+LBExtension.m in Sources */,
+				2FD4EEED1DDBF48300D681B0 /* CCColorCube.m in Sources */,
 				2F6FE6841D6BE6A3004D449A /* MHBagTypeModel.m in Sources */,
 				2F6FE69A1D6E96D2004D449A /* MHUpDateBagViewController.m in Sources */,
 				2F6FE68E1D6C2B54004D449A /* MHBagMessageController.m in Sources */,
@@ -695,6 +734,7 @@
 				2F6FE6811D6AF9B2004D449A /* MHAddBagCell.m in Sources */,
 				8BA73CC61DDB4E3500CAF5BE /* MHCategory.m in Sources */,
 				2FD4EEDC1DDABE9600D681B0 /* MHBill.m in Sources */,
+				2FD4EEEE1DDBF48300D681B0 /* CCLocalMaximum.m in Sources */,
 				2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

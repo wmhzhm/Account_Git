@@ -17,9 +17,9 @@
     NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
     NSMutableArray *mCategory = [[NSMutableArray alloc] init];
     for (NSDictionary *category in cate) {
-        MHCategory *categoryModel = [[MHCategory alloc] initWithDict:category];
-        if([categoryModel.isIncome isEqualToString:@"1"])
-        [mCategory addObject:categoryModel];
+        if ([[category valueForKey:@"isIncome"] isEqualToString:@"1"]) {
+            [mCategory addObject:category];
+        }
     }
     return  mCategory;
 }
@@ -31,14 +31,16 @@
     NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
     NSMutableArray *mCategory = [[NSMutableArray alloc] init];
     for (NSDictionary *category in cate) {
-        MHCategory *categoryModel = [[MHCategory alloc] initWithDict:category];
-        if([categoryModel.isIncome isEqualToString:@"0"])
-            [mCategory addObject:categoryModel];
+        if ([[category valueForKey:@"isIncome"] isEqualToString:@"0"]) {
+            [mCategory addObject:category];
+        }
     }
     return  mCategory;
 }
 
-
+- (UIImage *)categoryImage {
+    return [UIImage imageNamed:self.categoryImageFileNmae];
+}
 
 - (instancetype)initWithDict:(NSDictionary *)dict
 {

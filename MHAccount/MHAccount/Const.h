@@ -12,7 +12,8 @@
 
 #define WEAKSELF __weak typeof(self) weakSelf = self;
 
-
+/** 屏幕的SIZE */
+#define SCREEN_SIZE [[UIScreen mainScreen] bounds].size
 #define BCG_COLOR_MARGIN 5
 #define TYPE_IMG_SIZE 25
 
@@ -33,6 +34,13 @@
 #define padding 10
 #define BTNPADDING 20
 #define COLORIMG_SIZE 30
+/** height +10 是因为image和label都对顶部有5个像素的偏移量 */
+#define kCollectionFrame CGRectMake(0, kMaxNBY + kCreateBillHeaderViewFrame.size.height, SCREEN_SIZE.width,(kCollectionCellWidth + 10) * 4)
+/** 一个item的宽 */
+#define kCollectionCellWidth SCREEN_SIZE.width/6
 
-
+/** 记账界面的headerViewFrame */
+#define kCreateBillHeaderViewFrame CGRectMake(0, kMaxNBY, SCREEN_SIZE.width, 60)
+/** maxY navigationBar  + maxY statusBar*/
+#define kMaxNBY 70
 #endif /* Const_h */
