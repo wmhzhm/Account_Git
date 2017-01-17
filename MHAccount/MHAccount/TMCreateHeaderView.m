@@ -25,9 +25,8 @@
 @property (nonatomic, strong) UIColor *previousSelectColor;
 @end
 @implementation TMCreateHeaderView
+
 #pragma mark - lazy loading
-
-
 - (UIImageView *)categoryImageView
 {
     if (!_categoryImageView) {
@@ -67,7 +66,6 @@
     return _moneyLabel;
 }
 #pragma mark - system Methods
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -113,6 +111,9 @@
     [self.layer addSublayer:layer];
     self.bgColorlayer = layer;
 }
+
+
+
 #pragma mark - action 
 - (void)clickCategoryNameBtn:(TMButton *)sender {
     NSLog(@"click CatrgoryNameBtn");

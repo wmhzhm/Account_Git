@@ -13,7 +13,7 @@
 + (NSMutableArray *)getInComeCategoryArray
 {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category" ofType:@"plist"];
-
+  
     NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
     NSMutableArray *mCategory = [[NSMutableArray alloc] init];
     for (NSDictionary *category in cate) {

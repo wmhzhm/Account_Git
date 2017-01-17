@@ -16,10 +16,13 @@ static NSString *const collectionIdentifier = @"categoryCell";
 
 
 @interface MHAddBillModelViewController()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
-@property (nonatomic,strong)MHAddBillView *billView;
+@property (nonatomic,strong)MHAddBillView *billView;    //需要添加的BillView
 
 @property (nonatomic, strong)NSMutableArray *inComeArray;
 @property (nonatomic, strong)NSMutableArray *outComeArray;
+
+
+
 @end
 
 @implementation MHAddBillModelViewController
@@ -27,17 +30,28 @@ static NSString *const collectionIdentifier = @"categoryCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self loadBillView];
+}
+#pragma mark - 初始化函数
+- (void)loadBillView{
+    //初始化BillView
     self.billView = [[MHAddBillView alloc] initWithFrame:self.view.frame];
     self.view = self.billView;
+    //设置返回按钮
     [self.billView.back addTarget:self action:@selector(clickBack) forControlEvents:UIControlEventTouchUpInside];
+    //设置代理
     self.billView.inComeCategoryCollectionView.delegate = self;
+    
     self.billView.outComeCategoryCollectionView.delegate = self;
     self.billView.outComeCategoryCollectionView2.delegate = self;
+    
     self.billView.outComeCategoryScrollView.delegate = self;
     
+    
+    //初始化数组
     self.inComeArray = [MHCategory getInComeCategoryArray];
     self.outComeArray = [MHCategory getOutComeCategoryArray];
-    
 }
 
 
@@ -46,11 +60,25 @@ static NSString *const collectionIdentifier = @"categoryCell";
         NSLog(@"返回明细");
     }];
 }
+
+
 - (void)collectionViewRegisterClass {
     [self.billView.inComeCategoryCollectionView registerClass:[TMCategotyCollectionViewCell class] forCellWithReuseIdentifier:collectionIdentifier];
     [self.billView.outComeCategoryCollectionView registerClass:[TMCategotyCollectionViewCell class] forCellWithReuseIdentifier:collectionIdentifier];
     [self.billView.outComeCategoryCollectionView2 registerClass:[TMCategotyCollectionViewCell class] forCellWithReuseIdentifier:collectionIdentifier];
 }
+
+
+
+#pragma mark - 自定义方法
+///** 设置账单默认参数 */
+//- (void)setupBill {
+//    
+//    [self.billView animationWithBgColor:[UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000]];
+//    self.billView.backgroundColor = [UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000];
+//}
+
+
 #pragma mark - UIScrollerViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    CGPoint point = scrollView.contentOffset;

@@ -17,4 +17,5 @@
 @property (nonatomic, strong) UICollectionView *outComeCategoryCollectionView;
 @property (nonatomic, strong) UICollectionView *outComeCategoryCollectionView2;
 @property (nonatomic, strong) UIScrollView *outComeCategoryScrollView;
+@property (nonatomic, strong) UIPageControl *pageController;
 @end

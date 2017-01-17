@@ -12,7 +12,7 @@
 
 #import "MHBagCell.h"
 #import "Const.h"
-
+#import "POP.h"
 
 
 @interface MHBagCell()
@@ -155,5 +155,34 @@
             self.bcgImg.backgroundColor = WHITE;
             break;
     }
+}
+
+
+
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    if (self.highlighted) {
+        
+        POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+        scaleAnimation.duration           = 0.1f;
+        scaleAnimation.toValue            = [NSValue valueWithCGPoint:CGPointMake(0.95, 0.95)];
+        [self.typeImg pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+        [self.typeLabel pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+        [self.moneyLabel pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+        
+        
+    } else {
+        
+        POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+        scaleAnimation.toValue             = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+        scaleAnimation.velocity            = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
+        scaleAnimation.springBounciness    = 20.f;
+//        [self.titlelabel pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+        [self.typeImg pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+        [self.typeLabel pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+        [self.moneyLabel pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+    }
+
 }
 @end

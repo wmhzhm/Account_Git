@@ -39,6 +39,10 @@
 /** 一个item的宽 */
 #define kCollectionCellWidth SCREEN_SIZE.width/6
 
+
+
+#define kPageControllerFrame CGRectMake(0, kMaxNBY + kCollectionFrame.size.height + kCreateBillHeaderViewFrame.size.height, SCREEN_SIZE.width, 30)
+
 /** 记账界面的headerViewFrame */
 #define kCreateBillHeaderViewFrame CGRectMake(0, kMaxNBY, SCREEN_SIZE.width, 60)
 /** maxY navigationBar  + maxY statusBar*/

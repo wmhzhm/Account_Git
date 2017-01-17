@@ -12,6 +12,8 @@
 #import "MHDatabase.h"
 #import "MHBagCell.h"
 #import "MHBagModel.h"
+#import "POP.h"
+
 
 @interface MHMyBagTableViewController()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *accountArray;//账户对象组
@@ -65,7 +67,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
         static NSString *ID = @"MHBag";
-    
+        
         MHBagCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
         
         if (!cell) {
@@ -75,9 +77,13 @@
                 [MHBagCell sumMoneyCell:cell WithAccount:_accountArray];
             }else{
                 cell.bagModel = _accountArray[indexPath.row - 1];
+                cell.typeLabel.textColor = [UIColor whiteColor];
+                cell.moneyLabel.textColor = [UIColor whiteColor];
             }
+    [self addCellAnimatate:cell];
     return cell;
 }
+
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,5 +126,20 @@
     upDateBagController.row = indexPath.row;
     
     [self.navigationController pushViewController:upDateBagController animated:YES];
+}
+
+
+
+
+
+
+
+- (void)addCellAnimatate:(MHBagCell *)cell{
+    POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    scaleAnimation.duration           = 0.1f;
+    scaleAnimation.toValue            = [NSValue valueWithCGPoint:CGPointMake(0.95, 0.95)];
+    [cell.typeImg pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+    [cell.typeLabel pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+    [cell.moneyLabel pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
 }
 @end

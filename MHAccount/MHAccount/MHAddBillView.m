@@ -91,6 +91,8 @@
     
     
     self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
+    [self.headerView animationWithBgColor:[UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000]];
+    self.headerView.backgroundColor = [UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000];
     [self.headeView addSubview:self.headerView];
 //        [self.headerView makeConstraints:^(MASConstraintMaker *make){
 //        make.left.equalTo(self.headeView.left);
@@ -98,8 +100,6 @@
 ////        make.top.equalTo(_lineView.bottom);
 //    }];
     [self bringSubviewToFront:self.headerView];
-
-    
 }
 #pragma mark - lazyInit
 - (UIButton *)back{
@@ -119,6 +119,7 @@
     }
     return _headeView;
 }
+
 - (UIView *)lineView{
     if (!_lineView) {
         _lineView = [[UIView alloc] init];
@@ -161,7 +162,7 @@
 - (UICollectionView *)outComeCategoryCollectionView{
     
     if(!_outComeCategoryCollectionView){
-        _outComeCategoryCollectionView  = [[UICollectionView alloc] initWithFrame:kCollectionFrame collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+        _outComeCategoryCollectionView  = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, (kCollectionCellWidth+20 + 10) * 4 - 10)  collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
     }
     return _outComeCategoryCollectionView;
 }
@@ -170,10 +171,34 @@
 - (UICollectionView *)outComeCategoryCollectionView2{
     
     if(!_outComeCategoryCollectionView2){
-        _outComeCategoryCollectionView2  = [[UICollectionView alloc] initWithFrame:kCollectionFrame collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+        _outComeCategoryCollectionView2  = [[UICollectionView alloc] initWithFrame:CGRectMake(SCREEN_SIZE.width, 0, SCREEN_SIZE.width, (kCollectionCellWidth+20 + 10) * 4 -10) collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
     }
     return _outComeCategoryCollectionView2;
 }
+- (UIScrollView *)outComeCategoryScrollView{
+    if (!_outComeCategoryScrollView) {
+        _outComeCategoryScrollView = [[UIScrollView alloc] initWithFrame:kCollectionFrame];
+        _outComeCategoryScrollView.contentSize = CGSizeMake(kCollectionFrame.size.width * 2, kCollectionFrame.size.height);
+
+        [_outComeCategoryScrollView addSubview:self.outComeCategoryCollectionView];
+        [_outComeCategoryScrollView addSubview:self.outComeCategoryCollectionView2];
+    }
+    return _outComeCategoryScrollView;
+}
+
+- (UIPageControl *)pageController
+{
+    if (!_pageController) {
+        _pageController = [[UIPageControl alloc] initWithFrame:kPageControllerFrame];
+        _pageController.numberOfPages = 2;
+        _pageController.userInteractionEnabled = NO;
+        _pageController.pageIndicatorTintColor = [UIColor colorWithWhite:0.829 alpha:1.000];
+        _pageController.currentPageIndicatorTintColor = kSelectColor;
+    }
+    return _pageController;
+}
+
+
 
 #pragma mark - 方法
 - (void)clickIncomeBtn:(UIButton *)sender {
