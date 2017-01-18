@@ -13,6 +13,9 @@
 + (void)createDatabase;
 + (NSMutableArray*)searchAccount;
 + (NSMutableArray *)searchBagType;
++ (NSMutableArray*)searchCategoryInCome;
++ (NSMutableArray*)searchCategoryOutCome;
+
 + (void)addBagModel:(MHBagModel*)model;
 + (void)deleteBagModel:(MHBagModel *)model;
 + (void)upDateOldBagModel:(MHBagModel*)oldModel ToNewBagModel:(MHBagModel*)newModel;

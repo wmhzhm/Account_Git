@@ -89,8 +89,9 @@
     
     
     
-    
+    //添加headerView
     self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
+    //设置HeadView初始色彩
     [self.headerView animationWithBgColor:[UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000]];
     self.headerView.backgroundColor = [UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000];
     [self.headeView addSubview:self.headerView];
@@ -100,6 +101,13 @@
 ////        make.top.equalTo(_lineView.bottom);
 //    }];
     [self bringSubviewToFront:self.headerView];
+    
+    //加入PageController
+    [self addSubview:self.pageController];
+    
+    //加入ScorllerView
+    [self addSubview:self.outComeCategoryScrollView];
+    NSLog(@"%@",_outComeCategoryScrollView);
 }
 #pragma mark - lazyInit
 - (UIButton *)back{
@@ -175,6 +183,8 @@
     }
     return _outComeCategoryCollectionView2;
 }
+
+//ScrollerView
 - (UIScrollView *)outComeCategoryScrollView{
     if (!_outComeCategoryScrollView) {
         _outComeCategoryScrollView = [[UIScrollView alloc] initWithFrame:kCollectionFrame];
@@ -182,7 +192,12 @@
 
         [_outComeCategoryScrollView addSubview:self.outComeCategoryCollectionView];
         [_outComeCategoryScrollView addSubview:self.outComeCategoryCollectionView2];
-    }
+        
+        //设置类型
+        _outComeCategoryScrollView.pagingEnabled = YES;
+        /** 设置滚动条不可见 */
+        _outComeCategoryScrollView.showsHorizontalScrollIndicator = NO;
+        }
     return _outComeCategoryScrollView;
 }
 

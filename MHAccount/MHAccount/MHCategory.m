@@ -10,33 +10,33 @@
 
 @implementation MHCategory
 
-+ (NSMutableArray *)getInComeCategoryArray
-{
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category" ofType:@"plist"];
-  
-    NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
-    NSMutableArray *mCategory = [[NSMutableArray alloc] init];
-    for (NSDictionary *category in cate) {
-        if ([[category valueForKey:@"isIncome"] isEqualToString:@"1"]) {
-            [mCategory addObject:category];
-        }
-    }
-    return  mCategory;
-}
-
-+ (NSMutableArray *)getOutComeCategoryArray
-{
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category" ofType:@"plist"];
-    
-    NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
-    NSMutableArray *mCategory = [[NSMutableArray alloc] init];
-    for (NSDictionary *category in cate) {
-        if ([[category valueForKey:@"isIncome"] isEqualToString:@"0"]) {
-            [mCategory addObject:category];
-        }
-    }
-    return  mCategory;
-}
+//+ (NSMutableArray *)getInComeCategoryArray
+//{
+//    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category" ofType:@"plist"];
+//  
+//    NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
+//    NSMutableArray *mCategory = [[NSMutableArray alloc] init];
+//    for (NSDictionary *category in cate) {
+//        if ([[category valueForKey:@"isIncome"] isEqualToString:@"1"]) {
+//            [mCategory addObject:category];
+//        }
+//    }
+//    return  mCategory;
+//}
+//
+//+ (NSMutableArray *)getOutComeCategoryArray
+//{
+//    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category" ofType:@"plist"];
+//    
+//    NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
+//    NSMutableArray *mCategory = [[NSMutableArray alloc] init];
+//    for (NSDictionary *category in cate) {
+//        if ([[category valueForKey:@"isIncome"] isEqualToString:@"0"]) {
+//            [mCategory addObject:category];
+//        }
+//    }
+//    return  mCategory;
+//}
 
 - (UIImage *)categoryImage {
     return [UIImage imageNamed:self.categoryImageFileNmae];

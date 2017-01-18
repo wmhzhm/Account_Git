@@ -11,6 +11,7 @@
 #import <FMResultSet.h>
 #import "MHBagModel.h"
 #import "MHBagTypeModel.h"
+#import "MHCategory.h"
 
 @implementation MHDatabase
 /**
@@ -46,21 +47,51 @@
     [[self alloc] buildTableAtDB:db];
     [[self alloc] insertMH_ACCOUNT:db];
     [[self alloc] insertMH_ACCOUNT_TYPE:db];
+    [[self alloc] insertMH_CATEGORY:db];
     
     [db close];
 }
 
 - (void)buildTableAtDB:(FMDatabase*)db{
-    NSString *sql_create_table = @"create table if not exists MH_ACCOUNT (id integer primary key autoincrement not null, ACCOUNT_TYPE text not null,ACCOUNT_IMG text not null, ACCOUNT_COLOR INTEGER not null, ACCOUNT_MONEY TEXT not null);"
+    NSString *sql_create_table = \
+    @"create table if not exists MH_ACCOUNT \
+    (id integer primary key autoincrement not null,\
+    ACCOUNT_TYPE text not null,\
+    ACCOUNT_IMG text not null,\
+    ACCOUNT_COLOR INTEGER not null,\
+    ACCOUNT_MONEY TEXT not null);"
     
-    "create table if not exists MH_BILL (id integer primary key autoincrement, BILL_TYPE TEXT not null,IN_OUT TEXT not null,BILL_WHEN TEXT not null,REMARK TEXT);"
+    "create table if not exists MH_BILL \
+    (id integer primary key autoincrement,\
+    BILL_TYPE TEXT not null,\
+    IN_OUT TEXT not null,\
+    BILL_WHEN TEXT not null,\
+    REMARK TEXT);"
     
-    "create table if not exists MH_OUT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null);"
+    "create table if not exists MH_OUT_TYPE\
+    (id integer primary key autoincrement,\
+    TYPE_NAME TEXT not null,\
+    TYPE_IMG TEXT not null);"
     
-    "create table if not exists MH_ACCOUNT_TYPE  (id integer primary key autoincrement, TYPE_NAME TEXT not null,TYPE_IMG TEXT not null,COLOR INTEGER not null);"
+    "create table if not exists MH_ACCOUNT_TYPE \
+    (id integer primary key autoincrement,\
+    TYPE_NAME TEXT not null,\
+    TYPE_IMG TEXT not null,\
+    COLOR INTEGER not null);"
     
     
-    "create table if not exists MH_IN_TYPE  (id integer primary key autoincrement,TYPE_NAME TEXT not null,TYPE_IMG TEXT not null)";
+    "create table if not exists MH_IN_TYPE  \
+    (id integer primary key autoincrement,\
+    TYPE_NAME TEXT not null,\
+    TYPE_IMG TEXT not null);"
+    
+    
+    "create table if not exists MH_CATEGORY \
+    (CATEGORY_ID integer primary key autoincrement,\
+    CATEGORY_TITLE TEXT not null,\
+    CATEGORY_IMAGE_NAME TEXT not null,\
+    IS_IN_COME TEXT not null)"
+    ;
     BOOL success = [db executeStatements:sql_create_table];
     if (!success) {
         NSLog(@"建表失败！");
@@ -68,6 +99,25 @@
         NSLog(@"建表成功！");
     }
 }
+
+- (void)insertMH_CATEGORY:(FMDatabase*)db{
+     FMResultSet *res = [db executeQuery:@"select * from MH_CATEGORY"];
+     if (![res next]) {
+         //读取plist文件到实体类中
+         NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category" ofType:@"plist"];
+         
+         NSArray *cate = [NSArray arrayWithContentsOfFile:plistPath];
+         NSMutableArray *mCategory = [[NSMutableArray alloc] init];
+         
+         for (NSDictionary *category in cate) {
+//                 [mCategory addObject:category];
+              [db executeUpdate:@"insert into MH_CATEGORY (CATEGORY_TITLE,CATEGORY_IMAGE_NAME,IS_IN_COME) VALUES (?,?,?)",[category objectForKey:@"categoryTitle"],[category objectForKey:@"categoryImageFileNmae"],[category objectForKey:@"isIncome"]];
+         }
+         
+     }
+    [res close];
+}
+
 - (void)insertMH_ACCOUNT:(FMDatabase*)db{
     FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT"];
     if (![res next]) {
@@ -82,6 +132,7 @@
 - (void)insertMH_ACCOUNT_TYPE:(FMDatabase *)db{
     FMResultSet *res = [db executeQuery:@"select * from MH_ACCOUNT_TYPE"];
     if (![res next]) {
+        
         [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"现金",@"cash_img",@"0"];
         [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"储蓄卡",@"savingcard_img",@"1"];
         [db executeUpdate:@"insert into MH_ACCOUNT_TYPE (TYPE_NAME,TYPE_IMG,COLOR) VALUES (?,?,?)",@"信用卡",@"credit_card",@"2"];
@@ -140,6 +191,56 @@
         model.type = [res stringForColumn:@"TYPE_NAME"];
         model.img = [res stringForColumn:@"TYPE_IMG"];
         model.color = [res intForColumn:@"COLOR"];
+        [mArray addObject:model];
+    }
+    [res close];
+    [db close];
+    return mArray;
+}
+/**
+ *  获取消费类型
+ *
+ *  @return 返回一个含有所有消费类型对象的数组
+ */
++ (NSMutableArray*)searchCategoryInCome{
+    NSMutableArray *mArray = [[NSMutableArray alloc] init];
+    FMDatabase *db = [self myDB];
+    
+    [db open];
+    
+    FMResultSet *res = [db executeQuery:@"select CATEGORY_ID,CATEGORY_TITLE,CATEGORY_IMAGE_NAME,IS_IN_COME from MH_CATEGORY where IS_IN_COME = '1'"];
+    while ([res next]) {
+        MHCategory *model = [[MHCategory alloc] init];
+        model.categoryID = [res intForColumn:@"CATEGORY_ID"];
+        model.categoryTitle = [res stringForColumn:@"CATEGORY_TITLE"];
+        model.categoryImageFileNmae = [res stringForColumn:@"CATEGORY_IMAGE_NAME"];
+        model.isIncome = [res stringForColumn:@"IS_IN_COME"];
+        
+        [mArray addObject:model];
+    }
+    [res close];
+    [db close];
+    return mArray;
+}
+/**
+ *  获取入账类型
+ *
+ *  @return 返回一个含有所有入账类型对象的数组
+ */
++ (NSMutableArray*)searchCategoryOutCome{
+    NSMutableArray *mArray = [[NSMutableArray alloc] init];
+    FMDatabase *db = [self myDB];
+    
+    [db open];
+    
+    FMResultSet *res = [db executeQuery:@"select CATEGORY_ID,CATEGORY_TITLE,CATEGORY_IMAGE_NAME,IS_IN_COME from MH_CATEGORY where IS_IN_COME = '0'"];
+    while ([res next]) {
+        MHCategory *model = [[MHCategory alloc] init];
+        model.categoryID = [res intForColumn:@"CATEGORY_ID"];
+        model.categoryTitle = [res stringForColumn:@"CATEGORY_TITLE"];
+        model.categoryImageFileNmae = [res stringForColumn:@"CATEGORY_IMAGE_NAME"];
+        model.isIncome = [res stringForColumn:@"IS_IN_COME"];
+        
         [mArray addObject:model];
     }
     [res close];
