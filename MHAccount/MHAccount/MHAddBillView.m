@@ -17,6 +17,9 @@
 #import <Masonry.h>
 #import "TMCreateHeaderView.h"
 #import "TMCategoryCollectionViewFlowLayout.h"
+#import "MHCategory.h"
+#import "MHDatabase.h"
+#import "CCColorCube.h"
 
 @interface MHAddBillView()
 @property (nonatomic ,strong) UIView *lineView;
@@ -29,8 +32,13 @@
 @property (nonatomic, assign, getter=isIcome) BOOL income;
 //headView
 @property (nonatomic, strong) TMCreateHeaderView *headerView;
-@property (nonatomic, strong) UIView *headeView;
+//遮罩层
+@property (nonatomic, strong) UIView *shadeView;
+//按钮容器
+@property (nonatomic, strong) UIView *buttonView;
 
+@property (nonatomic, strong) UIView *headeView;
+@property (nonatomic, strong) MHCategory *firstIncomeCategory;
 
 
 @end
@@ -43,6 +51,7 @@
     [self layout];
     
     self.backgroundColor = [UIColor whiteColor];
+    self.outComeBtn.selected = YES;
     return self;
 }
 
@@ -63,19 +72,31 @@
         make.height.equalTo(1);
     }];
     
+    [self addSubview:self.buttonView];
+    [_buttonView makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(_back.right).offset(20);
+        make.centerX.equalTo(weakSelf);
+        make.top.equalTo(30);
+        make.bottom.equalTo(_lineView.top);
+    }];
     
     //出账类型按钮
-    [self addSubview:self.outComeBtn];
+    [self.buttonView addSubview:self.outComeBtn];
     [self.outComeBtn makeConstraints:^(MASConstraintMaker *make){
-        make.centerX.equalTo(weakSelf.centerX).with.offset(-30);
-        make.bottom.equalTo(_lineView.bottom).with.offset(-5);
+        make.left.equalTo(0);
+        make.width.equalTo(_buttonView).multipliedBy(0.5);
+        make.top.equalTo(0);
+        make.height.equalTo(_buttonView.height);
+//        make.bottom.width.equalTo(_lineView).multipliedBy(0.2);
     }];
     
     //入账类型按钮
-    [self addSubview:self.inComeBtn];
+    [self.buttonView addSubview:self.inComeBtn];
     [self.inComeBtn makeConstraints:^(MASConstraintMaker *make){
-        make.centerX.equalTo(weakSelf.centerX).with.offset(30);
-        make.bottom.equalTo(_lineView.bottom).with.offset(-5);
+        make.right.equalTo(0);
+        make.width.equalTo(_buttonView).multipliedBy(0.5);
+        make.top.equalTo(0);
+        make.height.equalTo(_buttonView.height);
     }];
     
     //头部视图
@@ -95,6 +116,7 @@
     [self.headerView animationWithBgColor:[UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000]];
     self.headerView.backgroundColor = [UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000];
     [self.headeView addSubview:self.headerView];
+    
 //        [self.headerView makeConstraints:^(MASConstraintMaker *make){
 //        make.left.equalTo(self.headeView.left);
 //            make.top.equalTo(self.headeView.top);
@@ -102,12 +124,17 @@
 //    }];
     [self bringSubviewToFront:self.headerView];
     
+    //加入收入
+    [self addSubview:self.inComeCategoryCollectionView];
+    //加入遮罩层
+    [self addSubview:self.shadeView];
     //加入PageController
     [self addSubview:self.pageController];
     
     //加入ScorllerView
     [self addSubview:self.outComeCategoryScrollView];
     NSLog(@"%@",_outComeCategoryScrollView);
+    
 }
 #pragma mark - lazyInit
 - (UIButton *)back{
@@ -135,14 +162,50 @@
     }
     return _lineView;
 }
+- (UIView *)shadeView{
+    if (!_shadeView) {
+        _shadeView = [[UIView alloc] initWithFrame:kCollectionFrame];
+        _shadeView.backgroundColor = [UIColor whiteColor];
+    }
+    return _shadeView;
+}
+//按钮容器View
+-(UIView *)buttonView{
+    if (!_buttonView) {
+        _buttonView = [[UIView alloc] init];
+        _buttonView.backgroundColor = [UIColor clearColor];
+        _buttonView.layer.cornerRadius = 15;
+        
+        _buttonView.layer.masksToBounds = YES;
+        _buttonView.layer.borderWidth = 0.5;
+        _buttonView.layer.borderColor = [[UIColor grayColor] CGColor];
+        _buttonView.layer.shadowOpacity = 0.5;
+        _buttonView.layer.shadowColor = [UIColor grayColor].CGColor;
+        _buttonView.layer.shadowRadius = 3;
+        _buttonView.layer.shadowOffset  = CGSizeMake(1, 1);
+
+    }
+    return _buttonView;
+}
+
 //出账类型按钮
 - (UIButton *)outComeBtn{
     if (!_outComeBtn) {
         _outComeBtn = [[UIButton alloc] init];
-        _outComeBtn.backgroundColor = [UIColor clearColor];
+//        _outComeBtn.backgroundColor = [UIColor clearColor];
         [_outComeBtn setTitle:@"支出" forState:UIControlStateNormal];
         [_outComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_outComeBtn setTitleColor:kSelectColor forState:UIControlStateSelected];
         [_outComeBtn addTarget:self action:@selector(clickOutComeBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_outComeBtn.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight cornerRadii:CGSizeMake(2.0, 2.0)];
+//        
+//        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+//        
+//        maskLayer.frame = _outComeBtn.bounds;
+//        
+//        maskLayer.path = maskPath.CGPath;
+//        
+//        _outComeBtn.layer.mask = maskLayer;
     }
     return _outComeBtn;
 }
@@ -151,10 +214,22 @@
 - (UIButton *)inComeBtn{
     if(!_inComeBtn){
         _inComeBtn = [[UIButton alloc] init];
-        _inComeBtn.backgroundColor = [UIColor clearColor];
+//        _inComeBtn.backgroundColor = [UIColor clearColor];
         [_inComeBtn setTitle:@"收入" forState:UIControlStateNormal];
         [_inComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_inComeBtn setTitleColor:kSelectColor forState:UIControlStateSelected];
         [_inComeBtn addTarget:self action:@selector(clickIncomeBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        _inComeBtn.backgroundColor = [UIColor greenColor];
+        
+//        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_inComeBtn.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight cornerRadii:CGSizeMake(2.0, 2.0)];
+//        
+//        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+//        
+//        maskLayer.frame = _outComeBtn.bounds;
+//        
+//        maskLayer.path = maskPath.CGPath;
+//        
+//        _inComeBtn.layer.mask = maskLayer;
     }
     return _inComeBtn;
 }
@@ -163,6 +238,7 @@
     
     if(!_inComeCategoryCollectionView){
         _inComeCategoryCollectionView  = [[UICollectionView alloc] initWithFrame:kCollectionFrame collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+        _inComeCategoryCollectionView.backgroundColor = [UIColor whiteColor];
     }
     return _inComeCategoryCollectionView;
 }
@@ -171,6 +247,7 @@
     
     if(!_outComeCategoryCollectionView){
         _outComeCategoryCollectionView  = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, (kCollectionCellWidth+20 + 10) * 4 - 10)  collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+        _outComeCategoryCollectionView.backgroundColor = [UIColor whiteColor];
     }
     return _outComeCategoryCollectionView;
 }
@@ -180,6 +257,7 @@
     
     if(!_outComeCategoryCollectionView2){
         _outComeCategoryCollectionView2  = [[UICollectionView alloc] initWithFrame:CGRectMake(SCREEN_SIZE.width, 0, SCREEN_SIZE.width, (kCollectionCellWidth+20 + 10) * 4 -10) collectionViewLayout:[[TMCategoryCollectionViewFlowLayout alloc] init]];
+        _outComeCategoryCollectionView2.backgroundColor = [UIColor whiteColor];
     }
     return _outComeCategoryCollectionView2;
 }
@@ -195,6 +273,7 @@
         
         //设置类型
         _outComeCategoryScrollView.pagingEnabled = YES;
+        _outComeCategoryCollectionView.bounces = YES;
         /** 设置滚动条不可见 */
         _outComeCategoryScrollView.showsHorizontalScrollIndicator = NO;
         }
@@ -216,8 +295,11 @@
 
 
 #pragma mark - 方法
+/**
+ 收入按钮
+ */
 - (void)clickIncomeBtn:(UIButton *)sender {
-//    //* ------------ */
+    //* ------------ */
 //    TMCategory *firstIncomeCategory = [[TMDataBaseManager defaultManager] queryCategorysWithPaymentType:income].firstObject;
 //    self.selectedCategory = firstIncomeCategory;
 //    if (!self.isUpdade) {
@@ -227,22 +309,48 @@
 //    }
 //    //* ------------ */
 //    NSLog(@"click IncomeBtn");
-//    sender.selected = YES;
-//    self.expendBtn.selected = NO;
-//    [self.view bringSubviewToFront:self.incomeCategoryCollectionView];
-//    [self.view bringSubviewToFront:self.headerView];
-//    [self.view sendSubviewToBack:self.expendCategoryScrollView];
-//    
-//    [self.headerView categoryImageWithFileName:firstIncomeCategory.categoryImageFileNmae andCategoryName:firstIncomeCategory.categoryTitle];
-//    
-//    CCColorCube *imageColor = [[CCColorCube alloc] init];
-//    NSArray *colors = [imageColor extractColorsFromImage:firstIncomeCategory.categoryImage flags:CCAvoidBlack count:1];
+    
+    self.firstIncomeCategory = [MHCategory bagWithDict: [MHDatabase searchCategoryInCome].firstObject];
+//    self.inComeArray = [MHDatabase searchCategoryInCome];
+//    self.outComeArray = [MHDatabase searchCategoryOutCome];
+    sender.selected = YES;
+    self.outComeBtn.selected = NO;
+    [self bringSubviewToFront:self.inComeCategoryCollectionView];
+    [self bringSubviewToFront:self.headerView];
+    [self sendSubviewToBack:self.outComeCategoryScrollView];
+    
+    [self.headerView categoryImageWithFileName:_firstIncomeCategory.categoryImageFileNmae andCategoryName:_firstIncomeCategory.categoryTitle];
+//
+    CCColorCube *imageColor = [[CCColorCube alloc] init];
+    NSArray *colors = [imageColor extractColorsFromImage:_firstIncomeCategory.categoryImage flags:CCAvoidBlack count:1];
 //    //* 设置HeaderView的背景颜色 */
-//    [self.headerView animationWithBgColor:colors.firstObject];
-//    self.pageController.numberOfPages = 1;
-//    [self.incomeCategoryCollectionView reloadData];
+    [self.headerView animationWithBgColor:colors.firstObject];
+    self.pageController.numberOfPages = 1;
+    [self.inComeCategoryCollectionView reloadData];
 }
+
+
+/**
+ 支出按钮
+ */
 - (void)clickOutComeBtn:(UIButton *)sender{
     
+    self.firstIncomeCategory = [MHCategory bagWithDict: [MHDatabase searchCategoryOutCome].firstObject];
+
+    sender.selected = YES;
+    self.inComeBtn.selected = NO;
+    [self bringSubviewToFront:self.outComeCategoryScrollView];
+    [self bringSubviewToFront:self.headerView];
+    [self sendSubviewToBack:self.inComeCategoryCollectionView];
+    
+    [self.headerView categoryImageWithFileName:_firstIncomeCategory.categoryImageFileNmae andCategoryName:_firstIncomeCategory.categoryTitle];
+    //
+    CCColorCube *imageColor = [[CCColorCube alloc] init];
+    NSArray *colors = [imageColor extractColorsFromImage:_firstIncomeCategory.categoryImage flags:CCAvoidBlack count:1];
+    //    //* 设置HeaderView的背景颜色 */
+    [self.headerView animationWithBgColor:colors.firstObject];
+    self.pageController.numberOfPages = 2;
+    [self.outComeCategoryCollectionView reloadData];
+    [self.outComeCategoryCollectionView2 reloadData];
 }
 @end

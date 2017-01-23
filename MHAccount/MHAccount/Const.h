@@ -39,7 +39,8 @@
 /** 一个item的宽 */
 #define kCollectionCellWidth SCREEN_SIZE.width/6
 
-
+//按钮选中颜色
+#define kSelectColor [UIColor colorWithRed:0.907 green:0.454 blue:0.000 alpha:1.000]
 
 #define kPageControllerFrame CGRectMake(0, kMaxNBY + kCollectionFrame.size.height + kCreateBillHeaderViewFrame.size.height, SCREEN_SIZE.width, 30)
 

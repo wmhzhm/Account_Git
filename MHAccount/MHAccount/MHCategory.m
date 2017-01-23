@@ -45,7 +45,11 @@
 - (instancetype)initWithDict:(NSDictionary *)dict
 {
     if (self = [super init]) {
-        [self setValuesForKeysWithDictionary:dict];
+//         [self setValuesForKeysWithDictionary:dict];
+        [self setValue:[dict valueForKey:@"categoryID"] forKey:@"categoryID"];
+        [self setValue:[dict valueForKey:@"categoryImageFileNmae"] forKey:@"categoryImageFileNmae"];
+        [self setValue:[dict valueForKey:@"categoryTitle"] forKey:@"categoryTitle"];
+        [self setValue:[dict valueForKey:@"isIncome"] forKey:@"isIncome"];
     }
     return self;
 }
