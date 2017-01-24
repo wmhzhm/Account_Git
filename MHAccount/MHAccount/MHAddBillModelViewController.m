@@ -11,6 +11,8 @@
 #import "MHCategory.h"
 #import "TMCategotyCollectionViewCell.h"
 #import "MHDatabase.h"
+#import "CCColorCube.h"
+#import "SZCalendarPicker.h"
 
 static NSString *const collectionIdentifier = @"categoryCell";
 
@@ -33,6 +35,9 @@ static NSString *const collectionIdentifier = @"categoryCell";
     [super viewDidLoad];
     
     [self loadBillView];
+    
+    //设置block方法集
+    [self loadBlocks];
 }
 #pragma mark - 初始化函数
 - (void)loadBillView{
@@ -58,6 +63,15 @@ static NSString *const collectionIdentifier = @"categoryCell";
     [self loadInOutComeArray];
 //    self.inComeArray = [MHCategory getInComeCategoryArray];
 //    self.outComeArray = [MHCategory getOutComeCategoryArray];
+}
+
+- (void)loadBlocks{
+    WEAKSELF
+    //设置计算器中的点击日历事件
+    self.billView.calculatorView.didClickDateBtnBlock = ^ {
+        [weakSelf SZCalendatPicker];
+    };
+
 }
 
 
@@ -93,6 +107,45 @@ static NSString *const collectionIdentifier = @"categoryCell";
         _updateFlg = YES;
     }
 }
+
+
+/** 时间选择器 */
+- (void)SZCalendatPicker{
+    SZCalendarPicker *calendarPicker = [SZCalendarPicker showOnView:self.view];
+    calendarPicker.today = [NSDate date];
+    calendarPicker.date = calendarPicker.today;
+    calendarPicker.frame = CGRectMake(0, SCREEN_SIZE.height - (self.billView.calculatorView.bounds.size.height + 50), SCREEN_SIZE.width, self.billView.calculatorView.bounds.size.height + 50);
+    WEAKSELF
+    calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
+        NSLog(@"%li-%li-%li", year,month,day);
+        NSString *time = nil;
+        if (month<10) {
+            time = [NSString stringWithFormat:@"%li-0%li-%li",year,month,day];
+        }
+        if (day<10) {
+            time = [NSString stringWithFormat:@"%li-%li-0%li",year,month,day];
+        }
+        if (month<10 && day <10) {
+            time = [NSString stringWithFormat:@"%li-0%li-0%li",year,month,day];
+        }else if(month>10 && day <10){
+            time = [NSString stringWithFormat:@"%li-%li-0%li",year,month,day];
+        }else if (month<10 && day >10)
+        {
+            time = [NSString stringWithFormat:@"%li-0%li-%li",year,month,day];
+        }else if (month>10 && day >10){
+              time = [NSString stringWithFormat:@"%li-%li-%li",year,month,day];
+        }
+//        if (weakSelf.isUpdade) {
+//            weakSelf.updateTimeStr = time;
+//        } else {
+//            weakSelf.bill.dateStr = time;
+//        }
+        [weakSelf.billView.calculatorView setTimeWtihTimeString:time];
+        
+    };
+    
+}
+
 #pragma mark - UIScrollerViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint point = scrollView.contentOffset;
@@ -103,6 +156,30 @@ static NSString *const collectionIdentifier = @"categoryCell";
 
 #pragma mark - UICollectionDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    TMCategotyCollectionViewCell * cell = nil;
+    MHCategory *category = nil;
+    if (collectionView==self.billView.inComeCategoryCollectionView) {//收入类别
+        cell = (TMCategotyCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        category = self.inComeArray[indexPath.row];
+    }else if (collectionView==self.billView.outComeCategoryCollectionView)//支出类别1
+    {
+        cell = (TMCategotyCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        category = self.outComeArray[indexPath.row];
+    }else{//支出类别2
+        cell = (TMCategotyCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        category = self.outComeArray[indexPath.row + 24];
+    }
+    
+    //更新HeaderView
+//    [self animationWithCell:cell];
+    self.billView.selectedCategory = category;
+    [self.billView.headerView categoryImageWithFileName:category.categoryImageFileNmae andCategoryName:category.categoryTitle];
+    //* 颜色提取 */
+    CCColorCube *imageColor = [[CCColorCube alloc] init];
+    NSArray *colors = [imageColor extractColorsFromImage:category.categoryImage flags:CCAvoidBlack count:1];
+    //* 设置HeaderView的背景颜色 */
+    [self.billView.headerView animationWithBgColor:colors.firstObject];
+
     
 }
 
@@ -142,4 +219,6 @@ static NSString *const collectionIdentifier = @"categoryCell";
     return cell;
 
 }
+
+
 @end

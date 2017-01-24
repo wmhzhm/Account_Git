@@ -15,11 +15,10 @@
 #import "MHAddBillView.h"
 #import "Const.h"
 #import <Masonry.h>
-#import "TMCreateHeaderView.h"
 #import "TMCategoryCollectionViewFlowLayout.h"
-#import "MHCategory.h"
 #import "MHDatabase.h"
 #import "CCColorCube.h"
+
 
 @interface MHAddBillView()
 @property (nonatomic ,strong) UIView *lineView;
@@ -30,8 +29,7 @@
 @property (nonatomic ,strong) UIButton *outComeBtn;
 //目前Bill类型
 @property (nonatomic, assign, getter=isIcome) BOOL income;
-//headView
-@property (nonatomic, strong) TMCreateHeaderView *headerView;
+
 //遮罩层
 @property (nonatomic, strong) UIView *shadeView;
 //按钮容器
@@ -44,6 +42,9 @@
 @end
 
 @implementation MHAddBillView
+
+
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -133,7 +134,9 @@
     
     //加入ScorllerView
     [self addSubview:self.outComeCategoryScrollView];
-    NSLog(@"%@",_outComeCategoryScrollView);
+//    NSLog(@"%@",_outComeCategoryScrollView);
+    //加入计算器
+    [self addSubview:self.calculatorView];
     
 }
 #pragma mark - lazyInit
@@ -183,7 +186,6 @@
         _buttonView.layer.shadowColor = [UIColor grayColor].CGColor;
         _buttonView.layer.shadowRadius = 3;
         _buttonView.layer.shadowOffset  = CGSizeMake(1, 1);
-
     }
     return _buttonView;
 }
@@ -292,7 +294,14 @@
     return _pageController;
 }
 
-
+//记账键盘
+- (TMCalculatorView *)calculatorView{
+    if (!_calculatorView) {
+        _calculatorView = [[[NSBundle mainBundle] loadNibNamed:@"TMCalculatorView" owner:nil options:nil] lastObject];
+        _calculatorView.frame =CGRectMake(0, CGRectGetMaxY(_pageController.frame), SCREEN_SIZE.width, SCREEN_SIZE.height - CGRectGetMaxY(_pageController.frame));
+    }
+    return _calculatorView;
+}
 
 #pragma mark - 方法
 /**
