@@ -123,7 +123,7 @@ static NSString *const collectionIdentifier = @"categoryCell";
             time = [NSString stringWithFormat:@"%li-0%li-%li",year,month,day];
         }
         if (day<10) {
-            time = [NSString stringWithFormat:@"%li-%li-0%li",year,month,day];
+            time = [NSString    stringWithFormat:@"%li-%li-0%li",year,month,day];
         }
         if (month<10 && day <10) {
             time = [NSString stringWithFormat:@"%li-0%li-0%li",year,month,day];

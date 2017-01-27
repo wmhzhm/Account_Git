@@ -27,6 +27,8 @@
 #define     TPMATO ([UIColor colorWithRed:255/255.0 green:112/255.0 blue:71/255.0 alpha:1.0]);
 #define     LAVENDER ([UIColor colorWithRed:218/255.0 green:112/255.0 blue:214/255.0 alpha:1.0]);
 
+/** 时光轴线条颜色 */
+#define LineColor [UIColor colorWithWhite:0.800 alpha:1.000]
 
 //#define TYPE_IMG_SIZE 28
 #define BillHeaderViewFrame CGRectMake(0, self.lineView.frame.origin.y, [UIScreen mainScreen].bounds.size.width, 60)

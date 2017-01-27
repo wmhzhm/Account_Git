@@ -75,7 +75,7 @@
     
     [self addSubview:self.buttonView];
     [_buttonView makeConstraints:^(MASConstraintMaker *make){
-        make.left.equalTo(_back.right).offset(20);
+        make.left.equalTo(_back.right).offset(60);
         make.centerX.equalTo(weakSelf);
         make.top.equalTo(30);
         make.bottom.equalTo(_lineView.top);
@@ -111,6 +111,7 @@
     
     
     
+    
     //添加headerView
     self.headerView = [[TMCreateHeaderView alloc] initWithFrame:BillHeaderViewFrame];
     //设置HeadView初始色彩
@@ -119,10 +120,10 @@
     [self.headeView addSubview:self.headerView];
     
 //        [self.headerView makeConstraints:^(MASConstraintMaker *make){
-//        make.left.equalTo(self.headeView.left);
+//            make.left.equalTo(self.headeView.left);
 //            make.top.equalTo(self.headeView.top);
-////        make.top.equalTo(_lineView.bottom);
-//    }];
+//            make.top.equalTo(_lineView.bottom);
+//          }];
     [self bringSubviewToFront:self.headerView];
     
     //加入收入
@@ -199,15 +200,7 @@
         [_outComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_outComeBtn setTitleColor:kSelectColor forState:UIControlStateSelected];
         [_outComeBtn addTarget:self action:@selector(clickOutComeBtn:) forControlEvents:UIControlEventTouchUpInside];
-//        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_outComeBtn.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight cornerRadii:CGSizeMake(2.0, 2.0)];
-//        
-//        CAShapeLayer *maskLayer = [CAShapeLayer layer];
-//        
-//        maskLayer.frame = _outComeBtn.bounds;
-//        
-//        maskLayer.path = maskPath.CGPath;
-//        
-//        _outComeBtn.layer.mask = maskLayer;
+        
     }
     return _outComeBtn;
 }
@@ -221,17 +214,7 @@
         [_inComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_inComeBtn setTitleColor:kSelectColor forState:UIControlStateSelected];
         [_inComeBtn addTarget:self action:@selector(clickIncomeBtn:) forControlEvents:UIControlEventTouchUpInside];
-//        _inComeBtn.backgroundColor = [UIColor greenColor];
         
-//        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_inComeBtn.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight cornerRadii:CGSizeMake(2.0, 2.0)];
-//        
-//        CAShapeLayer *maskLayer = [CAShapeLayer layer];
-//        
-//        maskLayer.frame = _outComeBtn.bounds;
-//        
-//        maskLayer.path = maskPath.CGPath;
-//        
-//        _inComeBtn.layer.mask = maskLayer;
     }
     return _inComeBtn;
 }

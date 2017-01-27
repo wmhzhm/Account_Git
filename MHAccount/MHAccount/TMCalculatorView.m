@@ -33,6 +33,7 @@
 
 @implementation TMCalculatorView
 - (void)awakeFromNib {
+    [super awakeFromNib];
     
     [self initializesWithPreparation];
 }
@@ -45,6 +46,7 @@
     self.selectedPlusOperation = NO;
     self.selectedOperation = NO;
     self.previousString = @"";
+    self.yearLabel.text = [[NSString currentDateStr] substringToIndex:4];
 }
 
 - (IBAction)didClickBtn:(UIButton *)sender {
