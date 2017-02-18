@@ -54,6 +54,7 @@
 		8BE41DF91E376D9600842BE1 /* SZCalendarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE41DF41E376D9600842BE1 /* SZCalendarPicker.m */; };
 		8BE41DFA1E376D9600842BE1 /* SZCalendarPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE41DF51E376D9600842BE1 /* SZCalendarPicker.xib */; };
 		8BE41DFB1E376D9600842BE1 /* UIColor+ZXLazy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE41DF71E376D9600842BE1 /* UIColor+ZXLazy.m */; };
+		B0B0E4581E55D2CD00108684 /* MHChoiseBagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0E4571E55D2CD00108684 /* MHChoiseBagViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,8 @@
 		8BE41DF51E376D9600842BE1 /* SZCalendarPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SZCalendarPicker.xib; sourceTree = "<group>"; };
 		8BE41DF61E376D9600842BE1 /* UIColor+ZXLazy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZXLazy.h"; sourceTree = "<group>"; };
 		8BE41DF71E376D9600842BE1 /* UIColor+ZXLazy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZXLazy.m"; sourceTree = "<group>"; };
+		B0B0E4561E55D2CD00108684 /* MHChoiseBagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHChoiseBagViewController.h; sourceTree = "<group>"; };
+		B0B0E4571E55D2CD00108684 /* MHChoiseBagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHChoiseBagViewController.m; sourceTree = "<group>"; };
 		D6289CC397615D06A22A8743 /* Pods-MHAccount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHAccount.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount.debug.xcconfig"; sourceTree = "<group>"; };
 		E1839BA412C8BEBA2E650329 /* Pods-MHAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHAccount.release.xcconfig"; path = "Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +212,8 @@
 			children = (
 				2FB7D6DC1D755D3700496DEF /* MHAddBillModelViewController.h */,
 				2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */,
+				B0B0E4561E55D2CD00108684 /* MHChoiseBagViewController.h */,
+				B0B0E4571E55D2CD00108684 /* MHChoiseBagViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -544,7 +549,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F7D722F1D5D73D300E048C5 /* Build configuration list for PBXNativeTarget "MHAccount" */;
 			buildPhases = (
-				C0459AA9EC8B246F886DB882 /* 📦 Check Pods Manifest.lock */,
+				C0459AA9EC8B246F886DB882 /* [CP] Check Pods Manifest.lock */,
 				12BDED36F0DE2A8DE22D82F3 /* [CP] Check Pods Manifest.lock */,
 				931CBD9EC3BF3820720FFBA9 /* [CP] Check Pods Manifest.lock */,
 				2F7D71FE1D5D73D300E048C5 /* Sources */,
@@ -767,19 +772,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MHAccount/Pods-MHAccount-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0459AA9EC8B246F886DB882 /* 📦 Check Pods Manifest.lock */ = {
+		C0459AA9EC8B246F886DB882 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -798,6 +803,7 @@
 				2FAA38571D6308C2000B19A1 /* MHDetailView.m in Sources */,
 				2F6FE67B1D6AED37004D449A /* MHAddBagController.m in Sources */,
 				2FD4EEE51DDADDD300D681B0 /* TMButton.m in Sources */,
+				B0B0E4581E55D2CD00108684 /* MHChoiseBagViewController.m in Sources */,
 				2FEA380B1D65A73600324A40 /* MHMyBagTableViewController.m in Sources */,
 				2F7D720A1D5D73D300E048C5 /* AppDelegate.m in Sources */,
 				2FB7D6E11D755FCD00496DEF /* MHAddBillView.m in Sources */,

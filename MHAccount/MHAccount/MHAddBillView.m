@@ -50,6 +50,8 @@
     self = [super initWithFrame:frame];
     
     [self layout];
+//    [self layoutIfNeeded];
+//    [self loadRadioBtn];
     
     self.backgroundColor = [UIColor whiteColor];
     self.outComeBtn.selected = YES;
@@ -87,20 +89,22 @@
         make.left.equalTo(0);
         make.width.equalTo(_buttonView).multipliedBy(0.5);
         make.top.equalTo(0);
-        make.height.equalTo(_buttonView.height);
-//        make.bottom.width.equalTo(_lineView).multipliedBy(0.2);
+        make.bottom.equalTo(-5);
     }];
+    
+    
     
     //入账类型按钮
     [self.buttonView addSubview:self.inComeBtn];
     [self.inComeBtn makeConstraints:^(MASConstraintMaker *make){
-        make.right.equalTo(0);
+        make.left.equalTo(_outComeBtn.right).with.offset(-1);
         make.width.equalTo(_buttonView).multipliedBy(0.5);
         make.top.equalTo(0);
-        make.height.equalTo(_buttonView.height);
+        make.bottom.equalTo(-5);
     }];
+    [self bringSubviewToFront:_outComeBtn];
     
-    //头部视图
+       //头部视图
     [self addSubview:self.headeView];
     [self.headeView makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(_lineView.bottom).with.offset(0);
@@ -119,11 +123,7 @@
     self.headerView.backgroundColor = [UIColor colorWithRed:0.485 green:0.686 blue:0.667 alpha:1.000];
     [self.headeView addSubview:self.headerView];
     
-//        [self.headerView makeConstraints:^(MASConstraintMaker *make){
-//            make.left.equalTo(self.headeView.left);
-//            make.top.equalTo(self.headeView.top);
-//            make.top.equalTo(_lineView.bottom);
-//          }];
+
     [self bringSubviewToFront:self.headerView];
     
     //加入收入
@@ -135,16 +135,47 @@
     
     //加入ScorllerView
     [self addSubview:self.outComeCategoryScrollView];
-//    NSLog(@"%@",_outComeCategoryScrollView);
+
     //加入计算器
     [self addSubview:self.calculatorView];
     
+    [self.buttonView bringSubviewToFront:self.outComeBtn];
 }
+
+
+
+//- (void)loadRadioBtn{
+    //设置左圆角,右直角
+//    UIBezierPath *maskPath_out=[UIBezierPath bezierPathWithRoundedRect:self.outComeBtn.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerBottomLeft cornerRadii:CGSizeMake(10, 10)];
+//    CAShapeLayer *maskLayer_out=[[CAShapeLayer alloc]init];
+//    maskLayer_out.frame=self.outComeBtn.bounds;
+//    maskLayer_out.path=maskPath_out.CGPath;
+//    self.outComeBtn.layer.mask=maskLayer_out;
+////    [self.outComeBtn.layer setCornerRadius:10];
+////    self.outComeBtn.layer add
+//    
+//    //设置左直角,右圆角
+//    UIBezierPath *maskPath_in=[UIBezierPath bezierPathWithRoundedRect:self.inComeBtn.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];
+//    CAShapeLayer *maskLayer_in=[[CAShapeLayer alloc]init];
+//    maskLayer_in.frame=self.inComeBtn.bounds;
+////    maskLayer_in.path=maskPath_in.CGPath;
+//    self.inComeBtn.layer.mask=maskLayer_in;
+//    
+//    
+//    
+//    [_outComeBtn.layer setBorderWidth:2];
+//    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+//    
+//    CGColorRef color = CGColorCreate(colorSpaceRef, (CGFloat[]){1,0,0,1});
+//    
+//    
+//    [_outComeBtn.layer setBorderColor:color];
+//}
 #pragma mark - lazyInit
 - (UIButton *)back{
     if (!_back) {
         _back = [[UIButton alloc] init];
-        [_back setBackgroundImage:[UIImage imageNamed:@"back_img"] forState:UIControlStateNormal];
+        [_back setBackgroundImage:[UIImage imageNamed:@"箭头"] forState:UIControlStateNormal];
         _back.layer.cornerRadius = 15;
         _back.layer.masksToBounds = YES;
     }
@@ -178,15 +209,15 @@
     if (!_buttonView) {
         _buttonView = [[UIView alloc] init];
         _buttonView.backgroundColor = [UIColor clearColor];
-        _buttonView.layer.cornerRadius = 15;
-        
-        _buttonView.layer.masksToBounds = YES;
-        _buttonView.layer.borderWidth = 0.5;
-        _buttonView.layer.borderColor = [[UIColor grayColor] CGColor];
-        _buttonView.layer.shadowOpacity = 0.5;
-        _buttonView.layer.shadowColor = [UIColor grayColor].CGColor;
-        _buttonView.layer.shadowRadius = 3;
-        _buttonView.layer.shadowOffset  = CGSizeMake(1, 1);
+//        _buttonView.layer.cornerRadius = 15;
+//        
+//        _buttonView.layer.masksToBounds = YES;
+//        _buttonView.layer.borderWidth = 0.5;
+//        _buttonView.layer.borderColor = [[UIColor grayColor] CGColor];
+//        _buttonView.layer.shadowOpacity = 0.5;
+//        _buttonView.layer.shadowColor = [UIColor grayColor].CGColor;
+//        _buttonView.layer.shadowRadius = 3;
+//        _buttonView.layer.shadowOffset  = CGSizeMake(1, 1);
     }
     return _buttonView;
 }
@@ -195,12 +226,13 @@
 - (UIButton *)outComeBtn{
     if (!_outComeBtn) {
         _outComeBtn = [[UIButton alloc] init];
-//        _outComeBtn.backgroundColor = [UIColor clearColor];
         [_outComeBtn setTitle:@"支出" forState:UIControlStateNormal];
         [_outComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_outComeBtn setTitleColor:kSelectColor forState:UIControlStateSelected];
         [_outComeBtn addTarget:self action:@selector(clickOutComeBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_outComeBtn.layer setBorderWidth:1];
         
+        [_outComeBtn.layer setBorderColor:kSelectColor.CGColor];
     }
     return _outComeBtn;
 }
@@ -209,15 +241,22 @@
 - (UIButton *)inComeBtn{
     if(!_inComeBtn){
         _inComeBtn = [[UIButton alloc] init];
-//        _inComeBtn.backgroundColor = [UIColor clearColor];
         [_inComeBtn setTitle:@"收入" forState:UIControlStateNormal];
+//        [_inComeBtn setImage:[UIImage imageNamed:@"收入默认"] forState:UIControlStateNormal];
+//        [_inComeBtn setImage:[UIImage imageNamed:@"收入选中"] forState:UIControlStateSelected];
         [_inComeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_inComeBtn setTitleColor:kSelectColor forState:UIControlStateSelected];
         [_inComeBtn addTarget:self action:@selector(clickIncomeBtn:) forControlEvents:UIControlEventTouchUpInside];
         
+        [_inComeBtn.layer setBorderWidth:1];
+        [_inComeBtn.layer setBorderColor:[UIColor blackColor].CGColor];
+//        [_inComeBtn.layer ]
+        //[_inComeBtn.layer setCornerRadius:10];
     }
     return _inComeBtn;
 }
+
+
 //入账CategoryCollectionView
 - (UICollectionView *)inComeCategoryCollectionView{
     
@@ -312,13 +351,19 @@
     [self sendSubviewToBack:self.outComeCategoryScrollView];
     
     [self.headerView categoryImageWithFileName:_firstIncomeCategory.categoryImageFileNmae andCategoryName:_firstIncomeCategory.categoryTitle];
-//
+
     CCColorCube *imageColor = [[CCColorCube alloc] init];
     NSArray *colors = [imageColor extractColorsFromImage:_firstIncomeCategory.categoryImage flags:CCAvoidBlack count:1];
 //    //* 设置HeaderView的背景颜色 */
     [self.headerView animationWithBgColor:colors.firstObject];
     self.pageController.numberOfPages = 1;
     [self.inComeCategoryCollectionView reloadData];
+    //切换颜色
+    [_inComeBtn.layer setBorderColor:kSelectColor.CGColor];
+    [_outComeBtn.layer setBorderColor:[UIColor blackColor].CGColor];
+    [self.buttonView bringSubviewToFront:self.outComeBtn];
+    [self.buttonView bringSubviewToFront:self.inComeBtn];
+
 }
 
 
@@ -344,5 +389,11 @@
     self.pageController.numberOfPages = 2;
     [self.outComeCategoryCollectionView reloadData];
     [self.outComeCategoryCollectionView2 reloadData];
+    
+    //切换颜色
+    [_outComeBtn.layer setBorderColor:kSelectColor.CGColor];
+    [_inComeBtn.layer setBorderColor:[UIColor blackColor].CGColor];
+    [self.buttonView bringSubviewToFront:self.inComeBtn];
+    [self.buttonView bringSubviewToFront:self.outComeBtn];
 }
 @end

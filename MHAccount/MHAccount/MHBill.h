@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MHCategory.h"
 
 @interface MHBill : NSObject
+//账单类型
+@property (nonatomic, strong) MHCategory *category;
+//该笔账单金额
+@property (nonatomic ,strong) NSString *money;
+//记账时间
+@property (nonatomic ,strong) NSString *dateStr;
 
 @end

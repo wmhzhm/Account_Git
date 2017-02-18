@@ -13,18 +13,30 @@
 #import "MHDatabase.h"
 #import "CCColorCube.h"
 #import "SZCalendarPicker.h"
+#import "SVProgressHUD.h"
+#import "MHBill.h"
+#import "MHChoiseBagViewController.h"
 
 static NSString *const collectionIdentifier = @"categoryCell";
 
 
-@interface MHAddBillModelViewController()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
+@interface MHAddBillModelViewController()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate
+                                            ,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)MHAddBillView *billView;    //需要添加的BillView
-
 @property (nonatomic, strong)NSMutableArray *inComeArray;
 @property (nonatomic, strong)NSMutableArray *outComeArray;
-//是否更新
+/**
+ 是否更新
+ */
 @property (nonatomic, assign) BOOL updateFlg;
-
+/** 
+ 金额
+ */
+@property (nonatomic, assign) double money;
+/**
+ 账单
+ */
+@property (nonatomic, strong) MHBill *bill;
 
 @end
 
@@ -71,7 +83,45 @@ static NSString *const collectionIdentifier = @"categoryCell";
     self.billView.calculatorView.didClickDateBtnBlock = ^ {
         [weakSelf SZCalendatPicker];
     };
+    
+    //设置计算器中的点击数字事件
+        self.billView.calculatorView.passValuesBlock = ^ (NSString *string){
+        [weakSelf.billView.headerView updateMoney:string];
+        if (!weakSelf.updateFlg) {
+#pragma wrong - 等待确定Bill模型的具体细则
+            //  weakSelf.bill.money = @(string.doubleValue);
+        } else {
+            if (string.floatValue > 0.0) {
+                weakSelf.money = string.doubleValue;
+            }
+        }
+    };
+    
+    //点击OK（保存）按钮
+    self.billView.calculatorView.didClickSaveBtnBlock = ^ {
+        if (!weakSelf.updateFlg) {
+            if (weakSelf.bill.money.floatValue <= 0.0) {
+                [weakSelf showSVProgressHUD:@"请输入有效金额!"];
+                [weakSelf.billView.headerView shakingAnimation];
+            } else {
+                weakSelf.bill.category = weakSelf.billView.selectedCategory;
+                //NSString *bookID = [NSString readUserDefaultOfSelectedBookID];
+                //TMBooks *book = [[TMDataBaseManager defaultManager] queryBooksWithBookID:bookID];
+                //weakSelf.bill.books = book;
+                //[[TMDataBaseManager defaultManager] insertWithBill:weakSelf.bill];
+                [weakSelf choiseBag];
+            }
+        } else {
+            if (weakSelf.money <= 0.0) {
+                [weakSelf showSVProgressHUD:@"请输入有效金额!"];
+                [weakSelf.billView.headerView shakingAnimation];
+            } else {
+                [weakSelf choiseBag];
+            }
+        }
+    };
 
+    
 }
 
 
@@ -81,6 +131,11 @@ static NSString *const collectionIdentifier = @"categoryCell";
     }];
 }
 
+- (void)choiseBag{
+    MHChoiseBagViewController *choiseBagViewController = [[MHChoiseBagViewController alloc] init];
+    choiseBagViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:choiseBagViewController animated:YES completion:nil];
+}
 
 - (void)collectionViewRegisterClass {
     [self.billView.inComeCategoryCollectionView registerClass:[TMCategotyCollectionViewCell class] forCellWithReuseIdentifier:collectionIdentifier];
@@ -220,5 +275,21 @@ static NSString *const collectionIdentifier = @"categoryCell";
 
 }
 
+#pragma mark - UITableViewDelegate
+
+
+#pragma mark - UITableViewDataSouces
+
+
+
+#pragma mark - SVProgressHUD
+- (void)showSVProgressHUD:(NSString *)text {
+    [SVProgressHUD setMinimumDismissTimeInterval:0.5];
+    [SVProgressHUD showImage:nil status:text];
+    //    [SVProgressHUD setMinimumSize:CGSizeMake(100, 60)];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:18]];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+}
 
 @end
