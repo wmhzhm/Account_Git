@@ -24,7 +24,7 @@
 
 - (void)clickAddBtn{
     MHAddBillModelViewController *modelViewController = [[MHAddBillModelViewController alloc] init];
-    modelViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    modelViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:modelViewController animated:YES completion:nil];
     
 }

@@ -76,7 +76,7 @@ static NSString *const collectionIdentifier = @"categoryCell";
 //    self.inComeArray = [MHCategory getInComeCategoryArray];
 //    self.outComeArray = [MHCategory getOutComeCategoryArray];
 }
-
+#pragma mark - block方法
 - (void)loadBlocks{
     WEAKSELF
     //设置计算器中的点击日历事件
@@ -133,7 +133,7 @@ static NSString *const collectionIdentifier = @"categoryCell";
 
 - (void)choiseBag{
     MHChoiseBagViewController *choiseBagViewController = [[MHChoiseBagViewController alloc] init];
-    choiseBagViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    choiseBagViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:choiseBagViewController animated:YES completion:nil];
 }
 

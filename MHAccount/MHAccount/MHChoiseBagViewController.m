@@ -17,6 +17,7 @@
 #import "MHBagCell.h"
 #import "MHBagModel.h"
 #import <Masonry.h>
+#import "MHBill.h"
 
 @interface MHChoiseBagViewController()<UITableViewDataSource,UITableViewDelegate>
 
@@ -89,20 +90,21 @@
         make.left.equalTo(0);
         make.right.equalTo(0);
         make.top.equalTo(0);
-        make.height.equalTo(80);
+        make.height.equalTo(60);
     }];
     
     [self.navigationView addSubview:self.backBtn];
     [self.backBtn makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(10);
         make.top.equalTo(30);
-        make.size.equalTo(CGSizeMake(30, 30));
+        make.size.equalTo(CGSizeMake(20, 20));
     }];
     
     [self.navigationView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.navigationView.centerX);
-        make.centerY.equalTo(self.navigationView.centerY);
+//        make.centerY.equalTo(self.navigationView.centerY);
+        make.top.equalTo(30);
     }];
     
     
@@ -147,21 +149,18 @@
     if (!cell) {
         cell = [[MHBagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-//    if (indexPath.row == 0) {
-//        [MHBagCell sumMoneyCell:cell WithAccount:_mAccountArray];
-//    }else{
+
         cell.bagModel = _mAccountArray[indexPath.row];
         cell.typeLabel.textColor = [UIColor whiteColor];
         cell.moneyLabel.textColor = [UIColor whiteColor];
-//    }
-
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
+    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"完成录入");
+    }];
 }
 @end
