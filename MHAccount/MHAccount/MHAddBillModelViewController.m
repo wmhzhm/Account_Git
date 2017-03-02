@@ -121,7 +121,10 @@ static NSString *const collectionIdentifier = @"categoryCell";
         }
     };
 
-    
+    //点击 备注按钮
+    self.billView.calculatorView.didClickRemarkBtnBlock = ^{
+        
+    };
 }
 
 
