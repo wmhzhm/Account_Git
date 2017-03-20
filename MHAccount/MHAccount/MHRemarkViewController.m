@@ -12,7 +12,7 @@
 #define MAS_SHORTHAND_GLOBALS
 
 
-#import "SVProgressHUD.h"
+
 #import "MHRemarkViewController.h"
 #import "MHBill.h"
 #import "Const.h"
@@ -20,6 +20,7 @@
 #import "UITextView+Placeholder.h"
 #import "MHActionSheetView.h"
 #import <Masonry.h>
+#import <SVProgressHUD.h>
 
 @interface MHRemarkViewController ()
 <
@@ -45,9 +46,12 @@ UINavigationControllerDelegate
 @property (nonatomic, strong) NSString *reMarks;
 /** 备注图片 */
 @property (nonatomic, strong) NSData *photoData;
+/** 记录辅助视图需要位移的数 */
+@property (nonatomic,assign) CGFloat delta;
 @end
 
 @implementation MHRemarkViewController
+
 
 
 #pragma mark - 单例
@@ -127,7 +131,7 @@ UINavigationControllerDelegate
     if (!_camerBtn) {
         _camerBtn = [[UIButton alloc] init];
         [_camerBtn setBackgroundImage:[UIImage imageNamed:@"btn_camera"] forState:UIControlStateNormal];
-#warning 未实现方法
+
         [_camerBtn addTarget:self action:@selector(clickCamerBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _camerBtn;
@@ -157,6 +161,8 @@ UINavigationControllerDelegate
 #pragma mark - systemMehtod
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.delta = 0;
     
     self.view.backgroundColor = [UIColor whiteColor];
     [self setUpNavigationBar];
@@ -237,7 +243,7 @@ UINavigationControllerDelegate
     [self.view addSubview:self.accessoryView];
     [self.accessoryView makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(CGSizeMake(SCREEN_SIZE.width, 50));
-        make.left.bottom.equalTo(weakSelf.contentTextView);
+        make.left.bottom.equalTo(weakSelf.view);
     }];
     
     //相机按钮
@@ -274,26 +280,28 @@ UINavigationControllerDelegate
 
 #pragma mark - Notification Action
 - (void)keyboardWillShow:(NSNotification *)noti {
-//    CGFloat keyboardY = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].origin.y;
-//    CGFloat camerBtnY = CGRectGetMaxY(self.accessoryView.frame);
+    CGFloat keyboardY = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].origin.y;
+    CGFloat camerBtnY = CGRectGetMaxY(self.accessoryView.frame);
 //    CGFloat delta = camerBtnY - keyboardY;
+    self.delta = self.delta + camerBtnY - keyboardY;
     WEAKSELF
-//    [UIView animateWithDuration:[noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue] animations:^{
-//        [weakSelf.accessoryView updateConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.equalTo(weakSelf.view).offset(-delta);
-//        }];
+    [UIView animateWithDuration:[noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue] animations:^{
+        [weakSelf.accessoryView updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(weakSelf.view).offset(-self.delta);
+        }];
         //* 立即掉用layoutSubviews */
         [weakSelf.view layoutIfNeeded];
-//    }];
+    }];
 }
 
 - (void)keyboardWillHide {
     WEAKSELF
-//    [self.accessoryView updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(weakSelf.view);
+    self.delta = 0;
+    [self.accessoryView updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(weakSelf.view);
         //* 立即掉用layoutSubviews */
         [weakSelf.view layoutIfNeeded];
-//    }];
+    }];
 }
 
 
@@ -370,7 +378,16 @@ UINavigationControllerDelegate
 //点击返回箭头
 - (void)cancelBtn:(UIButton *)sender {
     [self.contentTextView resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.contentTextView.text.length>40) {
+        [self showSVProgressHUD:@"备注超过最大字数"];
+        return;
+    }
+    WEAKSELF
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (weakSelf.passbackBlock) {
+            weakSelf.passbackBlock(weakSelf.reMarks,weakSelf.photoData);
+        }
+    }];
 }
 //点击完成按钮
 - (void)clickCompletedBtn:(TMButton *)sender {
