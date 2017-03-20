@@ -16,5 +16,8 @@
 @property (nonatomic ,strong) NSString *money;
 //记账时间
 @property (nonatomic ,strong) NSString *dateStr;
-
+//备注信息
+@property (nonatomic,strong) NSString *reMarks;
+//备注照片
+@property (nonatomic,strong) NSData *remarkPhoto;
 @end

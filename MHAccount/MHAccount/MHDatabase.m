@@ -54,38 +54,50 @@
 
 - (void)buildTableAtDB:(FMDatabase*)db{
     NSString *sql_create_table = \
+    /*
+     个人账户表
+     */
     @"create table if not exists MH_ACCOUNT \
     (id integer primary key autoincrement not null,\
     ACCOUNT_TYPE text not null,\
     ACCOUNT_IMG text not null,\
     ACCOUNT_COLOR INTEGER not null,\
     ACCOUNT_MONEY TEXT not null);"
-    
+    /*
+     账单表
+     */
     "create table if not exists MH_BILL \
     (id integer primary key autoincrement,\
     BILL_TYPE TEXT not null,\
     IN_OUT TEXT not null,\
     BILL_WHEN TEXT not null,\
     REMARK TEXT);"
-    
+    /*
+     支出分类表
+     */
     "create table if not exists MH_OUT_TYPE\
     (id integer primary key autoincrement,\
     TYPE_NAME TEXT not null,\
     TYPE_IMG TEXT not null);"
-    
+    /*
+     账户类型表
+     */
     "create table if not exists MH_ACCOUNT_TYPE \
     (id integer primary key autoincrement,\
     TYPE_NAME TEXT not null,\
     TYPE_IMG TEXT not null,\
     COLOR INTEGER not null);"
     
-    
+    /*
+     收入分类表
+     */
     "create table if not exists MH_IN_TYPE  \
     (id integer primary key autoincrement,\
     TYPE_NAME TEXT not null,\
     TYPE_IMG TEXT not null);"
-    
-    
+    /*
+    收支类型表
+     */
     "create table if not exists MH_CATEGORY \
     (CATEGORY_ID integer primary key autoincrement,\
     CATEGORY_TITLE TEXT not null,\

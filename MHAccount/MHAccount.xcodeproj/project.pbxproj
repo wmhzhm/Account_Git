@@ -44,6 +44,13 @@
 		2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA380D1D65A83500324A40 /* MHBagCell.m */; };
 		2FEA38111D65AA2F00324A40 /* MHBagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA38101D65AA2F00324A40 /* MHBagModel.m */; };
 		65B795B5DEFD1A0C86811B08 /* libPods-MHAccount.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FDD1C2D24BEB953409CC4D /* libPods-MHAccount.a */; };
+		8B8BBFE31E702EC7008C0FA7 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BBFDC1E702EC7008C0FA7 /* SVIndefiniteAnimatedView.m */; };
+		8B8BBFE41E702EC7008C0FA7 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BBFDE1E702EC7008C0FA7 /* SVProgressAnimatedView.m */; };
+		8B8BBFE51E702EC7008C0FA7 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BBFE01E702EC7008C0FA7 /* SVProgressHUD.m */; };
+		8B8BBFE61E702EC7008C0FA7 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BBFE21E702EC7008C0FA7 /* SVRadialGradientLayer.m */; };
+		8B8BBFE91E703DC5008C0FA7 /* MHRemarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BBFE81E703DC5008C0FA7 /* MHRemarkViewController.m */; };
+		8B8BBFED1E703FA1008C0FA7 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BBFEC1E703FA1008C0FA7 /* UITextView+Placeholder.m */; };
+		8B8BBFF01E70400A008C0FA7 /* MHActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BBFEF1E70400A008C0FA7 /* MHActionSheetView.m */; };
 		8BA73CC61DDB4E3500CAF5BE /* MHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA73CC51DDB4E3500CAF5BE /* MHCategory.m */; };
 		8BE41DE41E375EDA00842BE1 /* TMCalculatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE41DE21E375EDA00842BE1 /* TMCalculatorView.m */; };
 		8BE41DE51E375EDA00842BE1 /* TMCalculatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE41DE31E375EDA00842BE1 /* TMCalculatorView.xib */; };
@@ -147,6 +154,20 @@
 		2FEA380F1D65AA2F00324A40 /* MHBagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBagModel.h; sourceTree = "<group>"; };
 		2FEA38101D65AA2F00324A40 /* MHBagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBagModel.m; sourceTree = "<group>"; };
 		47FDD1C2D24BEB953409CC4D /* libPods-MHAccount.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MHAccount.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8BBFDB1E702EC7008C0FA7 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		8B8BBFDC1E702EC7008C0FA7 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		8B8BBFDD1E702EC7008C0FA7 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		8B8BBFDE1E702EC7008C0FA7 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		8B8BBFDF1E702EC7008C0FA7 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		8B8BBFE01E702EC7008C0FA7 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		8B8BBFE11E702EC7008C0FA7 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		8B8BBFE21E702EC7008C0FA7 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		8B8BBFE71E703DC5008C0FA7 /* MHRemarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHRemarkViewController.h; sourceTree = "<group>"; };
+		8B8BBFE81E703DC5008C0FA7 /* MHRemarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRemarkViewController.m; sourceTree = "<group>"; };
+		8B8BBFEB1E703FA1008C0FA7 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		8B8BBFEC1E703FA1008C0FA7 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
+		8B8BBFEE1E70400A008C0FA7 /* MHActionSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHActionSheetView.h; sourceTree = "<group>"; };
+		8B8BBFEF1E70400A008C0FA7 /* MHActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHActionSheetView.m; sourceTree = "<group>"; };
 		8BA73CC41DDB4E3500CAF5BE /* MHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCategory.h; sourceTree = "<group>"; };
 		8BA73CC51DDB4E3500CAF5BE /* MHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCategory.m; sourceTree = "<group>"; };
 		8BE41DE11E375EDA00842BE1 /* TMCalculatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCalculatorView.h; sourceTree = "<group>"; };
@@ -214,6 +235,8 @@
 				2FB7D6DD1D755D3700496DEF /* MHAddBillModelViewController.m */,
 				B0B0E4561E55D2CD00108684 /* MHChoiseBagViewController.h */,
 				B0B0E4571E55D2CD00108684 /* MHChoiseBagViewController.m */,
+				8B8BBFE71E703DC5008C0FA7 /* MHRemarkViewController.h */,
+				8B8BBFE81E703DC5008C0FA7 /* MHRemarkViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -230,6 +253,8 @@
 				8BE41DE11E375EDA00842BE1 /* TMCalculatorView.h */,
 				8BE41DE21E375EDA00842BE1 /* TMCalculatorView.m */,
 				8BE41DE31E375EDA00842BE1 /* TMCalculatorView.xib */,
+				8B8BBFEE1E70400A008C0FA7 /* MHActionSheetView.h */,
+				8B8BBFEF1E70400A008C0FA7 /* MHActionSheetView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -421,6 +446,8 @@
 		2FD4EEE71DDBF46600D681B0 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8B8BBFEA1E703F95008C0FA7 /* UITextView_PlaceHolder */,
+				8B8BBFDA1E702EB9008C0FA7 /* SVProgressHUD */,
 				8BE41DEB1E376D6A00842BE1 /* SZCalendarPicker */,
 				2FD4EEE81DDBF47600D681B0 /* ColorClub */,
 			);
@@ -496,6 +523,30 @@
 				E1839BA412C8BEBA2E650329 /* Pods-MHAccount.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B8BBFDA1E702EB9008C0FA7 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8B8BBFDB1E702EC7008C0FA7 /* SVIndefiniteAnimatedView.h */,
+				8B8BBFDC1E702EC7008C0FA7 /* SVIndefiniteAnimatedView.m */,
+				8B8BBFDD1E702EC7008C0FA7 /* SVProgressAnimatedView.h */,
+				8B8BBFDE1E702EC7008C0FA7 /* SVProgressAnimatedView.m */,
+				8B8BBFDF1E702EC7008C0FA7 /* SVProgressHUD.h */,
+				8B8BBFE01E702EC7008C0FA7 /* SVProgressHUD.m */,
+				8B8BBFE11E702EC7008C0FA7 /* SVRadialGradientLayer.h */,
+				8B8BBFE21E702EC7008C0FA7 /* SVRadialGradientLayer.m */,
+			);
+			name = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		8B8BBFEA1E703F95008C0FA7 /* UITextView_PlaceHolder */ = {
+			isa = PBXGroup;
+			children = (
+				8B8BBFEB1E703FA1008C0FA7 /* UITextView+Placeholder.h */,
+				8B8BBFEC1E703FA1008C0FA7 /* UITextView+Placeholder.m */,
+			);
+			name = UITextView_PlaceHolder;
 			sourceTree = "<group>";
 		};
 		8BE41DE61E37621600842BE1 /* Tools */ = {
@@ -795,6 +846,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FB7D6DE1D755D3700496DEF /* MHAddBillModelViewController.m in Sources */,
+				8B8BBFED1E703FA1008C0FA7 /* UITextView+Placeholder.m in Sources */,
+				8B8BBFF01E70400A008C0FA7 /* MHActionSheetView.m in Sources */,
 				2FD055B91D79268300DFFFEB /* LBTabBar.m in Sources */,
 				2F6FE6941D6D7B23004D449A /* MHBagMessageView.m in Sources */,
 				2FD4EEE21DDADD8C00D681B0 /* TMCreateHeaderView.m in Sources */,
@@ -813,6 +866,7 @@
 				8BE41DF91E376D9600842BE1 /* SZCalendarPicker.m in Sources */,
 				2F7D72071D5D73D300E048C5 /* main.m in Sources */,
 				2FEA380E1D65A83500324A40 /* MHBagCell.m in Sources */,
+				8B8BBFE61E702EC7008C0FA7 /* SVRadialGradientLayer.m in Sources */,
 				2FAA38541D62F9CC000B19A1 /* MHTabBarController.m in Sources */,
 				2F6FE6971D6E9678004D449A /* MHUpDateBagView.m in Sources */,
 				2F6FE68B1D6BFB53004D449A /* UIImage+Extension.m in Sources */,
@@ -823,13 +877,17 @@
 				2FD4EEED1DDBF48300D681B0 /* CCColorCube.m in Sources */,
 				2F6FE6841D6BE6A3004D449A /* MHBagTypeModel.m in Sources */,
 				2F6FE69A1D6E96D2004D449A /* MHUpDateBagViewController.m in Sources */,
+				8B8BBFE41E702EC7008C0FA7 /* SVProgressAnimatedView.m in Sources */,
 				2F6FE68E1D6C2B54004D449A /* MHBagMessageController.m in Sources */,
 				2FD055B61D79265D00DFFFEB /* UIImage+Image.m in Sources */,
 				2F6FE6811D6AF9B2004D449A /* MHAddBagCell.m in Sources */,
+				8B8BBFE91E703DC5008C0FA7 /* MHRemarkViewController.m in Sources */,
 				8BA73CC61DDB4E3500CAF5BE /* MHCategory.m in Sources */,
 				2FD4EEDC1DDABE9600D681B0 /* MHBill.m in Sources */,
+				8B8BBFE51E702EC7008C0FA7 /* SVProgressHUD.m in Sources */,
 				2FD4EEEE1DDBF48300D681B0 /* CCLocalMaximum.m in Sources */,
 				2F33DB8F1D659017009B10BD /* MHDatabase.m in Sources */,
+				8B8BBFE31E702EC7008C0FA7 /* SVIndefiniteAnimatedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

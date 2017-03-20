@@ -16,6 +16,8 @@
 #import "SVProgressHUD.h"
 #import "MHBill.h"
 #import "MHChoiseBagViewController.h"
+#import "MHRemarkViewController.h"
+#import "NSString+TMNSString.h"
 
 static NSString *const collectionIdentifier = @"categoryCell";
 
@@ -37,11 +39,27 @@ static NSString *const collectionIdentifier = @"categoryCell";
  账单
  */
 @property (nonatomic, strong) MHBill *bill;
-
+/**
+ 控制器内储存的备注信息
+ */
+@property (nonatomic,strong) NSString *remarks;
+/**
+ 控制器内储存的备注图片
+ */
+@property (nonatomic,strong) NSData *photoData;
 @end
 
 @implementation MHAddBillModelViewController
+#pragma mark - lazloading
+- (MHBill *)bill{
+    if (!_bill) {
+        _bill = [[MHBill alloc] init];
+    }
+    return _bill;
+}
 
+
+#pragma mark - systemMethoud
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -73,8 +91,7 @@ static NSString *const collectionIdentifier = @"categoryCell";
     
     //初始化数组
     [self loadInOutComeArray];
-//    self.inComeArray = [MHCategory getInComeCategoryArray];
-//    self.outComeArray = [MHCategory getOutComeCategoryArray];
+
 }
 #pragma mark - block方法
 - (void)loadBlocks{
@@ -88,8 +105,7 @@ static NSString *const collectionIdentifier = @"categoryCell";
         self.billView.calculatorView.passValuesBlock = ^ (NSString *string){
         [weakSelf.billView.headerView updateMoney:string];
         if (!weakSelf.updateFlg) {
-#pragma wrong - 等待确定Bill模型的具体细则
-            //  weakSelf.bill.money = @(string.doubleValue);
+              weakSelf.bill.money = string;
         } else {
             if (string.floatValue > 0.0) {
                 weakSelf.money = string.doubleValue;
@@ -120,10 +136,26 @@ static NSString *const collectionIdentifier = @"categoryCell";
             }
         }
     };
-
+    
     //点击 备注按钮
     self.billView.calculatorView.didClickRemarkBtnBlock = ^{
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MHRemarkViewController *remarkVC = [[MHRemarkViewController alloc] init];
+            //调用RemarkViewController中的block回调方法
+            remarkVC.passbackBlock = ^(NSString *remarks,NSData *photoData){
+                if (weakSelf.updateFlg) {
+//                    NSLog(@"line = %i,remarks = %@,photoData = %@",__LINE__,remarks,photoData);
+                    weakSelf.remarks = remarks;
+                    weakSelf.photoData = photoData;
+                } else {
+                    weakSelf.bill.reMarks = remarks;
+                    weakSelf.bill.remarkPhoto = photoData;
+                }
+            };
+            remarkVC.bill = weakSelf.bill;
+            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:remarkVC];
+            [weakSelf presentViewController:navi animated:YES completion:nil];
+        });
     };
 }
 
@@ -158,12 +190,14 @@ static NSString *const collectionIdentifier = @"categoryCell";
 
 - (void)loadInOutComeArray{
     if (_updateFlg == NO) {
-        //loadArray
-//        searchCategoryInCome
         self.inComeArray = [MHDatabase searchCategoryInCome];
         self.outComeArray = [MHDatabase searchCategoryOutCome];
         _updateFlg = YES;
     }
+    //加载初始bill
+    self.bill.category = self.outComeArray[0];
+    self.bill.money = @"0.00";
+    self.bill.dateStr = [NSString currentDateStr];
 }
 
 
@@ -229,7 +263,6 @@ static NSString *const collectionIdentifier = @"categoryCell";
     }
     
     //更新HeaderView
-//    [self animationWithCell:cell];
     self.billView.selectedCategory = category;
     [self.billView.headerView categoryImageWithFileName:category.categoryImageFileNmae andCategoryName:category.categoryTitle];
     //* 颜色提取 */
@@ -238,7 +271,8 @@ static NSString *const collectionIdentifier = @"categoryCell";
     //* 设置HeaderView的背景颜色 */
     [self.billView.headerView animationWithBgColor:colors.firstObject];
 
-    
+    //更新当前选择的Bill
+    self.bill.category = category;
 }
 
 
